@@ -1,0 +1,656 @@
+/* ================== Reset ================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%; /* Be cautious with this: `width: 100%;` on all elements can cause layout issues, especially with padding/borders. It's often better to apply this selectively or rely on block-level default behavior. For this specific case, it might be intended for some elements, but review its impact. */
+}
+
+/* ================== Root ================== */
+:root {
+  --primary: #0059ff;
+  --accent: #00d4ff;
+  --bg: #f5f7fa;
+  --text-dark: #1a1a1a;
+  --text-light: #555;
+  --success: #2ecc71;
+  --error: #e74c3c;
+  --pending: #f1c40f;
+  --border: #ddd;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --sidebar-width: 250px;
+}
+
+/* ================== App Layout ================== */
+.app {
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg);
+  color: var(--text-dark);
+}
+
+/* ================== Sidebar ================== */
+.sidebar {
+  width: var(--sidebar-width);
+  background: linear-gradient(to bottom, var(--primary), #0047cc);
+  color: white;
+  padding: 30px 20px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out; /* Added width for smoother transitions */
+  z-index: 1000;
+}
+
+.sidebar h2 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.sidebar nav a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  padding: 12px 15px;
+  margin: 10px 0;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  font-size: 1.05rem;
+}
+
+.sidebar nav a:hover {
+  background: var(--accent);
+  transform: translateX(5px);
+}
+
+.sidebar nav a.active {
+  background: var(--accent);
+  font-weight: bold;
+  box-shadow: inset 3px 0 0 white;
+}
+
+/* ================== Dashboard ================== */
+.dashboard {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.header {
+  margin-bottom: 30px;
+  background: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 2rem;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Hamburger menu for mobile */
+.hamburger-menu {
+  display: none; /* Hidden by default, shown on mobile */
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--primary);
+  z-index: 1001; /* Above sidebar */
+}
+
+/* ================== Panel ================== */
+.panel {
+  background: white;
+  padding: 30px;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.panel h2 {
+  margin-bottom: 25px;
+  color: var(--primary);
+  font-size: 1.7rem;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ================== Card Container & Cards ================== */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 8px solid transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  margin-bottom: 12px;
+  font-size: 1.3rem;
+  color: var(--text-dark);
+}
+
+.card p {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+
+.card .activity-details {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+.card .activity-details li {
+  margin-bottom: 5px;
+  color: var(--text-light);
+}
+
+.card .activity-details li strong {
+  color: var(--primary);
+}
+
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: white;
+}
+
+.status-badge.approved {
+  background-color: var(--success);
+}
+
+.status-badge.rejected {
+  background-color: var(--error);
+}
+
+.status-badge.pending {
+  background-color: var(--pending);
+  color: var(--text-dark);
+}
+
+.card.approved {
+  border-left-color: var(--success);
+}
+
+.card.rejected {
+  border-left-color: var(--error);
+}
+
+.card.pending {
+  border-left-color: var(--pending);
+}
+
+.actions {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.actions button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* ================== Forms (Add Company/Project/Review) ================== */
+.add-item-form {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.add-item-form input {
+  flex: 1;
+  min-width: 180px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.add-item-form input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0, 89, 255, 0.2);
+}
+
+.add-item-form button {
+  background: var(--primary);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.add-item-form button:hover {
+  background: #0047cc;
+  transform: translateY(-2px);
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 25px;
+  font-size: 1rem;
+}
+
+/* ================== Analytics ================== */
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.analytics-card {
+  background: #f0f8ff;
+  padding: 25px;
+  border-left: 5px solid var(--primary);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease;
+}
+
+.analytics-card:hover {
+  transform: translateY(-3px);
+}
+
+.analytics-card h3 {
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+
+.analytics-card .metric-value {
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: var(--text-dark);
+}
+
+.bar-wrapper {
+  background: #e0e0e0;
+  border-radius: 10px;
+  height: 12px;
+  margin-top: 15px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  background-color: var(--primary);
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease-out;
+}
+
+.analytics-card .top-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.analytics-card .top-list li {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.charts-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.chart-card {
+  max-height: 500px;
+  min-height: 300px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-card h3 {
+  margin-bottom: 20px;
+  color: var(--primary);
+  font-size: 1.4rem;
+}
+
+/* Ensure chart responsiveness */
+.chart-card canvas {
+  max-height: 100%;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ================== Reviews ================== */
+.reviews-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.review {
+  padding: 25px;
+  background: #fdfdfd;
+  border-left: 5px solid var(--accent);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease;
+}
+
+.review:hover {
+  transform: translateY(-3px);
+}
+
+.review h4 {
+  margin-bottom: 10px;
+  color: var(--primary);
+  font-size: 1.25rem;
+}
+
+.review .feedback-text {
+  font-style: italic;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.review .stars {
+  color: gold;
+  font-size: 1.3rem;
+}
+
+.review .star-empty {
+  color: #ccc;
+}
+
+/* ================== Footer ================== */
+.footer {
+  text-align: center;
+  margin-top: 50px;
+  padding: 20px;
+  color: var(--text-light);
+  font-size: 0.9rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+/* ================== Utility Styles ================== */
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-secondary {
+  background-color: var(--accent);
+  color: white;
+}
+
+.btn-danger {
+  background-color: var(--error);
+  color: white;
+}
+
+.btn-success {
+  background-color: var(--success);
+  color: white;
+}
+
+.btn-warning {
+  background-color: var(--pending);
+  color: #222;
+}
+
+.btn:hover {
+  filter: brightness(1.1);
+}
+
+/* ========== Transitions & Animations ========== */
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Medium devices (Tablets, small laptops) */
+@media screen and (max-width: 1024px) {
+  .sidebar {
+    width: 200px; /* Slightly narrower sidebar */
+  }
+
+  .dashboard {
+    margin-left: 200px;
+    padding: 30px; /* Reduced padding */
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .panel h2 {
+    font-size: 1.5rem;
+  }
+
+  .card-container,
+  .analytics-grid,
+  .reviews-container,
+  .charts-container {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust min-width */
+    gap: 20px;
+  }
+
+  .add-item-form {
+    flex-direction: column; /* Stack form elements */
+    gap: 10px;
+  }
+
+  .add-item-form input,
+  .add-item-form button {
+    width: 100%; /* Full width for form inputs/buttons */
+  }
+}
+
+/* Small devices (Mobile phones, up to 768px) */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 0; /* Hide sidebar by default on mobile */
+    transform: translateX(-100%); 
+    
+    display: none;
+ 
+  }
+
+  .sidebar.open {
+    /* Crucially, when the 'open' class is applied on mobile, it remains hidden */
+    width: 0;
+    transform: translateX(-100%);
+  }
+
+  .dashboard {
+    margin-left: 0; /* Dashboard takes full width on mobile */
+    padding: 20px;
+
+  }
+
+  .header {
+    justify-content: flex-start; 
+    gap: 15px;
+  }
+  
+  .hamburger-menu {
+    display: block; /* Show hamburger menu on mobile */
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .panel {
+    padding: 20px;
+  }
+
+  .card-container,
+  .analytics-grid,
+  .reviews-container,
+  .charts-container {
+    grid-template-columns: 1fr; /* Single column layout */
+    gap: 15px;
+  }
+
+  .actions button {
+    width: 100%; /* Full width buttons */
+    margin-right: 0;
+  }
+
+  .analytics-card {
+    padding: 20px;
+  }
+}
+
+/* Extra small devices (Landscape phones, smaller mobiles, up to 480px) */
+@media screen and (max-width: 480px) {
+  .header h1 {
+    font-size: 1.3rem;
+  }
+  .sidebar{
+    display: none;
+  }
+  .sidebar h2 {
+    font-size: 1.5rem;
+  }
+
+  .sidebar nav a {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+  }
+
+  .panel h2 {
+    font-size: 1.3rem;
+  }
+
+  .card,
+  .analytics-card,
+  .review {
+    padding: 15px;
+  }
+
+  .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .analytics-card .metric-value {
+    font-size: 1.5rem;
+  }
+
+  .add-item-form input,
+  .add-item-form button {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  /* Ensure sidebar remains hidden even when 'open' on very small screens */
+  .sidebar.open {
+    width: 0;
+    transform: translateX(-100%);
+  }
+}
+
+/* Specific adjustment for very small screens (e.g., 320px) */
+@media screen and (max-width: 320px) {
+ 
+
+  .dashboard {
+    padding: 10px; /* Further reduce padding for extremely small screens */
+  }
+
+  .header h1 {
+    font-size: 1.1rem; /* Smaller header title */
+  }
+}
