@@ -308,7 +308,7 @@ function App() {
               setIsSidebarOpen(true);
             }
           }}
-          className={`sidebar  ${isSidebarOpen ? "w-[30%]" : ""}  `}
+          className={`sidebar  ${isSidebarOpen ? "open" : ""}  `}
         >
           <img src="http://uptoskills.com/wp-content/uploads/2023/04/hd-logo-iguru.png" />
           <h2>Uptoskills Admin</h2>

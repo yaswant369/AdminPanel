@@ -84,6 +84,7 @@
   padding: 40px;
   overflow-y: auto;
   transition: margin-left 0.3s ease-in-out;
+  
 }
 
 .header {
@@ -544,9 +545,10 @@
 .app{
   width: 100vw;
   display: flex;
-  gap:45vw;
+  
   justify-content: space-between;
 }
+
 
   /* .sidebar.open {
     /* Crucially, when the 'open' class is applied on mobile, it remains hidden */
@@ -555,12 +557,13 @@
   /* } */ 
 
   .dashboard {
-    margin-left: 0; /* Dashboard takes full width on mobile */
+    /* margin-left: 0; Dashboard takes full width on mobile */
     padding: 20px;
+
 
   }
   .dashAdmin{
-width: 80%;
+  
 text-align: center;
 
   }
@@ -607,12 +610,23 @@ text-align: center;
 
 /* Extra small devices (Landscape phones, smaller mobiles, up to 480px) */
 @media screen and (max-width: 480px) {
+  .app{
+    width: 100vw;
+    display: flex;
+    
+    justify-content: space-between;
+  }
   .header h1 {
     font-size: 1.3rem;
   }
-  .sidebar{
+  .dashAdmin{
+  
+    text-align: center;
+    
+      }
+  /* .sidebar{
     display: none;
-  }
+  } */
   .sidebar h2 {
     font-size: 1.5rem;
   }
@@ -646,11 +660,11 @@ text-align: center;
     padding: 10px;
   }
 
-  /* Ensure sidebar remains hidden even when 'open' on very small screens */
+  /* Ensure sidebar remains hidden even when 'open' on very small screens*/
   .sidebar.open {
-    width: 0;
-    transform: translateX(-100%);
-  }
+    width: 40vw;
+    /* transform: translateX(-100%); */
+  } 
 }
 
 /* Specific adjustment for very small screens (e.g., 320px) */
