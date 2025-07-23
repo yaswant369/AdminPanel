@@ -34,6 +34,7 @@
 .sidebar {
   width: var(--sidebar-width);
   background: linear-gradient(to bottom, var(--primary), #0047cc);
+ 
   color: white;
   padding: 30px 20px;
   position: fixed;
@@ -56,7 +57,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  color: white;
+  color: black;
   padding: 12px 15px;
   margin: 10px 0;
   text-decoration: none;
@@ -236,6 +237,7 @@
   font-weight: 500;
   font-size: 0.9rem;
 }
+ 
 
 /* ================== Forms (Add Company/Project/Review) ================== */
 .add-item-form {
@@ -539,29 +541,38 @@
 
 /* Small devices (Mobile phones, up to 768px) */
 @media screen and (max-width: 768px) {
-  .sidebar {
-    width: 0; /* Hide sidebar by default on mobile */
-    transform: translateX(-100%); 
-    
-    display: none;
- 
-  }
+.app{
+  width: 100vw;
+  display: flex;
+  gap:45vw;
+  justify-content: space-between;
+}
 
-  .sidebar.open {
+  /* .sidebar.open {
     /* Crucially, when the 'open' class is applied on mobile, it remains hidden */
-    width: 0;
-    transform: translateX(-100%);
-  }
+    /* width: 0;
+    transform: translateX(-100%); */
+  /* } */ 
 
   .dashboard {
     margin-left: 0; /* Dashboard takes full width on mobile */
     padding: 20px;
 
   }
+  .dashAdmin{
+width: 80%;
+text-align: center;
+
+  }
+  .hamburger-menu{
+   
+    width: 20%;
+  }
 
   .header {
-    justify-content: flex-start; 
-    gap: 15px;
+     justify-content: space-evenly;
+  width: 90vw;
+
   }
   
   .hamburger-menu {

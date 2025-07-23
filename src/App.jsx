@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Bar, Pie } from "react-chartjs-2";
@@ -77,7 +76,7 @@ function App() {
   const [newCompany, setNewCompany] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const [activeSection, setActiveSection] = useState("students"); // State for active section
-const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for mobile sidebar
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // State for mobile sidebar
   const [projects, setProjects] = useState([
     { id: 1, title: "AI Chatbot", mentor: "Dr. Reddy", students: 15 },
     { id: 2, title: "Resume Builder", mentor: "Ms. Sharma", students: 25 },
@@ -111,9 +110,24 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for mobile s
   });
 
   const [mentorReviews, setMentorReviews] = useState([
-    { id: 1, mentor: "Dr. Reddy", feedback: "Excellent guidance for AI projects.", rating: 5 },
-    { id: 2, mentor: "Ms. Sharma", feedback: "Resume Builder students had strong engagement.", rating: 4.8 },
-    { id: 3, mentor: "Dr. Singh", feedback: "Provided insightful feedback on data projects.", rating: 4.5 },
+    {
+      id: 1,
+      mentor: "Dr. Reddy",
+      feedback: "Excellent guidance for AI projects.",
+      rating: 5,
+    },
+    {
+      id: 2,
+      mentor: "Ms. Sharma",
+      feedback: "Resume Builder students had strong engagement.",
+      rating: 4.8,
+    },
+    {
+      id: 3,
+      mentor: "Dr. Singh",
+      feedback: "Provided insightful feedback on data projects.",
+      rating: 4.5,
+    },
   ]);
 
   const [newReviewMentor, setNewReviewMentor] = useState("");
@@ -158,15 +172,24 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for mobile s
 
   const addCompany = () => {
     if (newCompany.trim()) {
-      const newId = companies.length > 0 ? Math.max(...companies.map(c => c.id)) + 1 : 1;
-      setCompanies([...companies, { id: newId, name: newCompany, status: "pending", hires: 0 }]);
+      const newId =
+        companies.length > 0 ? Math.max(...companies.map((c) => c.id)) + 1 : 1;
+      setCompanies([
+        ...companies,
+        { id: newId, name: newCompany, status: "pending", hires: 0 },
+      ]);
       setNewCompany("");
     }
   };
 
   const addProject = () => {
-    if (newProjectTitle.trim() && newProjectMentor.trim() && newProjectStudents.trim()) {
-      const newId = projects.length > 0 ? Math.max(...projects.map(p => p.id)) + 1 : 1;
+    if (
+      newProjectTitle.trim() &&
+      newProjectMentor.trim() &&
+      newProjectStudents.trim()
+    ) {
+      const newId =
+        projects.length > 0 ? Math.max(...projects.map((p) => p.id)) + 1 : 1;
       setProjects([
         ...projects,
         {
@@ -183,9 +206,13 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for mobile s
   };
 
   const updateProjectStudents = (id, newStudentCount) => {
-    setProjects(projects.map(project =>
-      project.id === id ? { ...project, students: parseInt(newStudentCount, 10) || 0 } : project
-    ));
+    setProjects(
+      projects.map((project) =>
+        project.id === id
+          ? { ...project, students: parseInt(newStudentCount, 10) || 0 }
+          : project
+      )
+    );
   };
 
   const removeProject = (id) => {
@@ -195,7 +222,10 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for mobile s
 
   const addMentorReview = () => {
     if (newReviewMentor && newReviewText && newReviewRating) {
-      const newId = mentorReviews.length > 0 ? Math.max(...mentorReviews.map(r => r.id)) + 1 : 1;
+      const newId =
+        mentorReviews.length > 0
+          ? Math.max(...mentorReviews.map((r) => r.id)) + 1
+          : 1;
       const review = {
         id: newId,
         mentor: newReviewMentor,
@@ -213,7 +243,9 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for mobile s
     <ul className="activity-details">
       <li>Activity: {student.activity}</li>
       <li>Last Login: {student.lastLogin}</li>
-      <li>Progress: <strong>{student.progress}%</strong></li>
+      <li>
+        Progress: <strong>{student.progress}%</strong>
+      </li>
     </ul>
   );
 
@@ -250,12 +282,7 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for mobile s
       {
         label: "Placement Distribution",
         data: Object.values(analytics.placementDistribution),
-        backgroundColor: [
-          "#0059ff",
-          "#00d4ff",
-          "#2ecc71",
-          "#f1c40f",
-        ],
+        backgroundColor: ["#0059ff", "#00d4ff", "#2ecc71", "#f1c40f"],
         borderColor: "#ffffff",
         borderWidth: 2,
       },
@@ -263,53 +290,95 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for mobile s
   };
 
   return (
-    <div className="app">
-     <aside className={`sidebar ${isSidebarOpen ? "open" : ""}`}>   <h2>Uptoskills Admin</h2>
-        <nav>
-          <a
-            href="#students"
-            className={activeSection === "students" ? "active" : ""}
-           onClick={() => { setActiveSection("students"); setIsSidebarOpen(false); }}
-          >
-            Students
-          </a>
-          <a
-            href="#companies"
-            className={activeSection === "companies" ? "active" : ""}
-            onClick={() => { setActiveSection("companies"); setIsSidebarOpen(false); }}
-          >
-            Companies
-          </a>
-          <a
-            href="#projects"
-            className={activeSection === "projects" ? "active" : ""}
-            onClick={() => { setActiveSection("projects"); setIsSidebarOpen(false); }}
-          >
-            Projects
-          </a>
-          <a
-            href="#analytics"
-            className={activeSection === "analytics" ? "active" : ""}
-            onClick={() => { setActiveSection("analytics"); setIsSidebarOpen(false); }}
-          >
-            Analytics
-          </a>
-          <a
-            href="#mentor"
-            className={activeSection === "mentor" ? "active" : ""}
-            onClick={() => { setActiveSection("mentor"); setIsSidebarOpen(false); }}
-          >
-            Mentor Reviews
-          </a>
-        </nav>
-      </aside>
+    <div
+      className={`app flex justify-between 
+      gap-[5vw] 
+      md:gap-[2vw] 
+      w-screen`}
+    >
+      {isSidebarOpen && (
+        <aside
+          onClick={(e) => {
+            if (window.innerWidth < 761) {
+              e.stopPropagation();
+              setIsSidebarOpen(false);
+            }
+            if (window.innerWidth >= 761) {
+              e.stopPropagation();
+              setIsSidebarOpen(true);
+            }
+          }}
+          className={`sidebar  ${isSidebarOpen ? "w-[30%]" : ""}  `}
+        >
+          <img src="http://uptoskills.com/wp-content/uploads/2023/04/hd-logo-iguru.png" />
+          <h2>Uptoskills Admin</h2>
+          <nav>
+            <a
+              href="#students"
+              className={activeSection === "students" ? "active" : ""}
+              onClick={() => {
+                setActiveSection("students");
+                setIsSidebarOpen(false);
+              }}
+            >
+              Students
+            </a>
+            <a
+              href="#companies"
+              className={activeSection === "companies" ? "active" : ""}
+              onClick={() => {
+                setActiveSection("companies");
+                setIsSidebarOpen(false);
+              }}
+            >
+              Companies
+            </a>
+            <a
+              href="#projects"
+              className={activeSection === "projects" ? "active" : ""}
+              onClick={() => {
+                setActiveSection("projects");
+                setIsSidebarOpen(false);
+              }}
+            >
+              Projects
+            </a>
+            <a
+              href="#analytics"
+              className={activeSection === "analytics" ? "active" : ""}
+              onClick={() => {
+                setActiveSection("analytics");
+                setIsSidebarOpen(false);
+              }}
+            >
+              Analytics
+            </a>
+            <a
+              href="#mentor"
+              className={activeSection === "mentor" ? "active" : ""}
+              onClick={() => {
+                setActiveSection("mentor");
+                setIsSidebarOpen(false);
+              }}
+            >
+              Mentor Reviews
+            </a>
+          </nav>
+        </aside>
+      )}
 
       <main className="dashboard">
         <header className="header">
-          <div className="hamburger-menu" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
-    ☰
-</div>
-          <h1>Admin Panel (Uptoskills Team Only)</h1>
+          {!isSidebarOpen && (
+            <div
+              className="hamburger-menu"
+              onClick={() => setIsSidebarOpen((prev) => !prev)}
+            >
+              ☰
+            </div>
+          )}
+
+          <h1 className="dashAdmin">Admin Panel (Uptoskills Team Only)</h1>
         </header>
 
         <section id="students" className="panel slide-in">
@@ -327,21 +396,31 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for mobile s
                 s.name.toLowerCase().includes(searchTerm.toLowerCase())
               )
               .map((student) => (
-                <div key={student.id} className={`card ${student.status} fade-in`}>
+                <div
+                  key={student.id}
+                  className={`card ${student.status} fade-in`}
+                >
                   <h3>{student.name}</h3>
                   {getActivityDetails(student)}
                   <p>
-                    Status: <span className={`status-badge ${student.status}`}>{student.status}</span>
+                    Status:{" "}
+                    <span className={`status-badge ${student.status}`}>
+                      {student.status}
+                    </span>
                   </p>
                   <div className="actions">
                     <button
-                      onClick={() => handleStudentApproval(student.id, "approved")}
+                      onClick={() =>
+                        handleStudentApproval(student.id, "approved")
+                      }
                       className="btn btn-success"
                     >
                       Approve
                     </button>
                     <button
-                      onClick={() => handleStudentApproval(student.id, "rejected")}
+                      onClick={() =>
+                        handleStudentApproval(student.id, "rejected")
+                      }
                       className="btn btn-danger"
                     >
                       Reject
@@ -367,20 +446,30 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for mobile s
           </div>
           <div className="card-container">
             {companies.map((company) => (
-              <div key={company.id} className={`card ${company.status} fade-in`}>
+              <div
+                key={company.id}
+                className={`card ${company.status} fade-in`}
+              >
                 <h3>{company.name}</h3>
                 <p>
-                  Status: <span className={`status-badge ${company.status}`}>{company.status}</span>
+                  Status:{" "}
+                  <span className={`status-badge ${company.status}`}>
+                    {company.status}
+                  </span>
                 </p>
                 <div className="actions">
                   <button
-                    onClick={() => handleCompanyApproval(company.id, "approved")}
+                    onClick={() =>
+                      handleCompanyApproval(company.id, "approved")
+                    }
                     className="btn btn-success"
                   >
                     Approve
                   </button>
                   <button
-                    onClick={() => handleCompanyApproval(company.id, "rejected")}
+                    onClick={() =>
+                      handleCompanyApproval(company.id, "rejected")
+                    }
                     className="btn btn-danger"
                   >
                     Reject
@@ -425,7 +514,7 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for mobile s
                   Mentor: <strong>{project.mentor}</strong>
                 </p>
                 <p>
-                Students: <strong>{project.students}</strong>
+                  Students: <strong>{project.students}</strong>
                 </p>
                 <div className="actions">
                   <button
@@ -450,7 +539,12 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for mobile s
               <div className="bar-wrapper">
                 <div
                   className="bar-fill"
-                  style={{ width: `${Math.min(analytics.totalHires / 200 * 100, 100)}%` }} // Max 200 hires for visual scale
+                  style={{
+                    width: `${Math.min(
+                      (analytics.totalHires / 200) * 100,
+                      100
+                    )}%`,
+                  }} // Max 200 hires for visual scale
                 ></div>
               </div>
             </div>
@@ -498,11 +592,17 @@ const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for mobile s
           <div className="charts-container">
             <div className="chart-card fade-in">
               <h3>Monthly Hire Trend</h3>
-              <Bar data={hireTrendData} options={{ responsive: true, maintainAspectRatio: false }} />
+              <Bar
+                data={hireTrendData}
+                options={{ responsive: true, maintainAspectRatio: false }}
+              />
             </div>
             <div className="chart-card fade-in">
               <h3>Placement Package Distribution</h3>
-              <Pie data={placementDistributionData} options={{ responsive: true, maintainAspectRatio: false }} />
+              <Pie
+                data={placementDistributionData}
+                options={{ responsive: true, maintainAspectRatio: false }}
+              />
             </div>
           </div>
         </section>
