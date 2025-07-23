@@ -299,11 +299,11 @@ function App() {
       {isSidebarOpen && (
         <aside
           onClick={(e) => {
-            if (window.innerWidth < 761) {
+            if (window.innerWidth < 768) {
               e.stopPropagation();
               setIsSidebarOpen(false);
             }
-            if (window.innerWidth >= 761) {
+            if (window.innerWidth >= 768) {
               e.stopPropagation();
               setIsSidebarOpen(true);
             }
