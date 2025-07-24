@@ -31,18 +31,26 @@
 }
 
 /* ================== Sidebar ================== */
-.sidebar {
+.sidebar.open {
   width: var(--sidebar-width);
-  background: linear-gradient(to bottom, var(--primary), #0047cc);
+  background:  #1e293b;
  
   color: white;
-  padding: 30px 20px;
+  padding: 20px;
   position: fixed;
   top: 0;
-  bottom: 0;
+  bottom: 0; 
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out; /* Added width for smoother transitions */
-  z-index: 1000;
+  transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;  /* Added width for smoother transitions */
+   z-index: 1000; 
+}
+.logo {
+  /* margin-bottom: 40px;*/
+   display: block;
+   margin-top: 0;
+}
+.logo-highlight {
+  color: #06b6d4;
 }
 
 .sidebar h2 {
@@ -67,14 +75,14 @@
 }
 
 .sidebar nav a:hover {
-  background: var(--accent);
+  background: #334155;
   transform: translateX(5px);
 }
 
 .sidebar nav a.active {
-  background: var(--accent);
-  font-weight: bold;
-  box-shadow: inset 3px 0 0 white;
+  background: #3b82f6;
+  /* font-weight: bold;
+  box-shadow: inset 3px 0 0 white; */
 }
 
 /* ================== Dashboard ================== */
@@ -84,6 +92,7 @@
   padding: 40px;
   overflow-y: auto;
   transition: margin-left 0.3s ease-in-out;
+  word-wrap: break-word;
   
 }
 
@@ -100,7 +109,7 @@
 
 .header h1 {
   font-size: 2rem;
-  color: var(--primary);
+  /* color: var(--primary); */
   display: flex;
   align-items: center;
   gap: 10px;
@@ -111,7 +120,7 @@
   display: none; /* Hidden by default, shown on mobile */
   font-size: 2rem;
   cursor: pointer;
-  color: var(--primary);
+  color: black;
   z-index: 1001; /* Above sidebar */
 }
 
@@ -127,7 +136,7 @@
 
 .panel h2 {
   margin-bottom: 25px;
-  color: var(--primary);
+  /* color: var(--primary); */
   font-size: 1.7rem;
   border-bottom: 2px solid var(--accent);
   padding-bottom: 10px;
@@ -198,7 +207,7 @@
 }
 
 .status-badge.approved {
-  background-color: var(--success);
+  background-color: #00bda5;
 }
 
 .status-badge.rejected {
@@ -211,7 +220,7 @@
 }
 
 .card.approved {
-  border-left-color: var(--success);
+  border-left-color: #00bda5;
 }
 
 .card.rejected {
@@ -265,7 +274,7 @@
 }
 
 .add-item-form button {
-  background: var(--primary);
+  background: #00aaff;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -277,7 +286,7 @@
 }
 
 .add-item-form button:hover {
-  background: #0047cc;
+  background: #016ca2;
   transform: translateY(-2px);
 }
 
@@ -301,7 +310,7 @@
 .analytics-card {
   background: #f0f8ff;
   padding: 25px;
-  border-left: 5px solid var(--primary);
+  border-left: 5px solid #00aaff;
   border-radius: 12px;
   box-shadow: var(--shadow);
   display: flex;
@@ -322,7 +331,7 @@
 
 .analytics-card .metric-value {
   font-weight: bold;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   color: var(--text-dark);
 }
 
@@ -458,7 +467,7 @@
 }
 
 .btn-success {
-  background-color: var(--success);
+  background-color: #00bda5;
   color: white;
 }
 
@@ -504,13 +513,26 @@
 
 /* Medium devices (Tablets, small laptops) */
 @media screen and (max-width: 1024px) {
+  /* .sidebar {
+    background: linear-gradient(to bottom, var(--primary), #0047cc);
+    color: white;
+    width: var(--sidebar-width, 250px);
+    height: 100vh;
+    transition: all 0.3s ease-in-out;
+    z-index: 1000;
+  } */
+
   .sidebar {
-    width: 200px; /* Slightly narrower sidebar */
+    position: relative;
+    transform: translateX(0);
+  }
+
+  .sidebar.closed {
+    display: none;
   }
 
   .dashboard {
-    margin-left: 200px;
-    padding: 30px; /* Reduced padding */
+    margin-left: 250px;
   }
 
   .header h1 {
@@ -542,31 +564,52 @@
 
 /* Small devices (Mobile phones, up to 768px) */
 @media screen and (max-width: 768px) {
-.app{
-  width: 100vw;
-  display: flex;
-  
-  justify-content: space-between;
-}
+  .sidebar.open {
+    position: relative;
+    width: 30vw;
+    max-width: 300px;
+    transition: all 0.3s ease;
+    z-index: 1000;
+  }
 
+  .sidebar.closed {
+    display: none;
+  }
 
-  /* .sidebar.open {
-    /* Crucially, when the 'open' class is applied on mobile, it remains hidden */
-    /* width: 0;
-    transform: translateX(-100%); */
-  /* } */ 
+  .app {
+    flex-direction: row; /* Stack sidebar & dashboard if needed */
+  }
 
   .dashboard {
-    /* margin-left: 0; Dashboard takes full width on mobile */
+    margin-left: 0;
     padding: 20px;
+  }
 
+ 
+  /* .sidebar {
+    width: 0;
+    overflow: hidden;
+   
+    transition: width 0.3s ease;
+  }
+  .sidebar.open {
+    width: 70vw;
+
+    max-width: 300px;
 
   }
-  .dashAdmin{
+
+  .sidebar.closed {
+    left: -100%;
+  } 
+
+ 
   
-text-align: center;
-
-  }
+  .dashboard {
+    margin-left: 0 !important;
+    flex: 1;
+    transition: all 0.3s ease;
+  } */
   .hamburger-menu{
    
     width: 20%;
@@ -574,21 +617,26 @@ text-align: center;
 
   .header {
      justify-content: space-evenly;
-  width: 90vw;
-
   }
+  
+
   
   .hamburger-menu {
     display: block; /* Show hamburger menu on mobile */
   }
 
-  .header h1 {
+  /* .header h1 {
     font-size: 1.5rem;
-  }
+  } */
 
   .panel {
     padding: 20px;
   }
+  .dashAdmin{
+    font-size: 1.4rem;
+
+    text-align: center;    
+      }
 
   .card-container,
   .analytics-grid,
@@ -606,23 +654,21 @@ text-align: center;
   .analytics-card {
     padding: 20px;
   }
+  .sidebar.closed {
+    width: 0;
+    overflow: hidden;
+  }
 }
 
 /* Extra small devices (Landscape phones, smaller mobiles, up to 480px) */
 @media screen and (max-width: 480px) {
-  .app{
-    width: 100vw;
-    display: flex;
-    
-    justify-content: space-between;
-  }
+  
   .header h1 {
     font-size: 1.3rem;
   }
   .dashAdmin{
-  
-    text-align: center;
-    
+    font-size: 1.6rem;
+    text-align: center;    
       }
   /* .sidebar{
     display: none;
@@ -673,6 +719,7 @@ text-align: center;
 
   .dashboard {
     padding: 10px; /* Further reduce padding for extremely small screens */
+    
   }
 
   .header h1 {

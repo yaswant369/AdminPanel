@@ -291,10 +291,7 @@ function App() {
 
   return (
     <div
-      className={`app flex justify-between 
-      gap-[5vw] 
-      md:gap-[2vw] 
-      w-screen`}
+      className={`app   w-screen ${isSidebarOpen ? "appopen" : " appclose"}`}
     >
       {isSidebarOpen && (
         <aside
@@ -308,9 +305,12 @@ function App() {
               setIsSidebarOpen(true);
             }
           }}
-          className={`sidebar  ${isSidebarOpen ? "open" : ""}  `}
+          className={`sidebar  ${isSidebarOpen ? "open" : "closed"}  `}
         >
-          <img src="http://uptoskills.com/wp-content/uploads/2023/04/hd-logo-iguru.png" />
+          <img
+            src="http://uptoskills.com/wp-content/uploads/2023/04/hd-logo-iguru.png"
+            className="  logo"
+          />
           <h2>Uptoskills Admin</h2>
           <nav>
             <a
@@ -367,7 +367,13 @@ function App() {
         </aside>
       )}
 
-      <main className="dashboard">
+      <main
+        className={`dashboard ${
+          !isSidebarOpen
+            ? "ml-0 p-[20px] w-[100%] absolute left-0 top-0  bg-red-700"
+            : ""
+        } `}
+      >
         <header className="header">
           {!isSidebarOpen && (
             <div
