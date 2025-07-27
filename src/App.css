@@ -34,7 +34,8 @@
 .sidebar.open {
   width: var(--sidebar-width);
   background:  #1e293b;
- 
+  
+
   color: white;
   padding: 20px;
   position: fixed;
@@ -64,16 +65,40 @@
 .sidebar nav a {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
+  
   color: white;
-  padding: 12px 15px;
+  padding: 12px 5px;
   margin: 10px 0;
   text-decoration: none;
   border-radius: 8px;
   transition: background 0.3s ease, transform 0.2s ease;
   font-size: 1.05rem;
 }
+.sidebar nav{
+  width: 100%;
+ 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.sidebar svg{
+  
+  width: 3vw;
+}
+.navIcons{
+  display: flex;
+  padding: 0px 2.5vw;
+ 
+  width:100% ;
+ 
+  
+gap: 0.5vw;
+ 
+  align-items: center;
 
+}
 .sidebar nav a:hover {
   background: #334155;
   transform: translateX(5px);
@@ -256,22 +281,28 @@
   margin-bottom: 30px;
   flex-wrap: wrap;
 }
-
-.add-item-form input {
-  flex: 1;
+.add-item-form div{
   min-width: 180px;
   padding: 12px;
+  flex: 1;
+}
+
+/* 
+.add-item-form input {
+
+ 
+
   border: 1px solid var(--border);
   border-radius: 8px;
   font-size: 1rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
+} */
 
-.add-item-form input:focus {
+/* .add-item-form input:focus {
   outline: none;
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(0, 89, 255, 0.2);
-}
+} */
 
 .add-item-form button {
   background: #00aaff;
@@ -289,14 +320,38 @@
   background: #016ca2;
   transform: translateY(-2px);
 }
-
-.search-input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
+.Searching{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 25px;
-  font-size: 1rem;
+  width: 100%;
+  position: relative;
+
+}
+.Searching svg{ 
+  width: 3vw;
+  color:  #6B7280;
+  position: absolute;
+  left: 3px; 
+  
+}
+.search-input{  
+  font-size: 1rem; 
+  
+  box-shadow: var(--shadow);  
+  padding: 12px;
+  color:  #6B7280;
+
+  border: 1px solid #D1D5DB;
+  border-radius: 6px;  
+}
+.search-input::placeholder{
+  padding-left: 3vw;
+}
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #3B82F6;
 }
 
 /* ================== Analytics ================== */
