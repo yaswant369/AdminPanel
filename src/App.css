@@ -34,13 +34,14 @@
 .sidebar.open {
   width: var(--sidebar-width);
   background:  #1e293b;
-  
+  height: 80vh;
 
   color: white;
   padding: 20px;
   position: fixed;
-  top: 0;
-  bottom: 0; 
+  top: 55%;
+  transform: translateY(-50%);
+  /* bottom: 0;  */
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, width 0.3s ease-in-out;  /* Added width for smoother transitions */
    z-index: 1000; 
@@ -114,6 +115,7 @@ gap: 0.5vw;
 .dashboard {
   margin-left: var(--sidebar-width);
   flex: 1;
+  margin-top: 10vh;
   padding: 40px;
   overflow-y: auto;
   transition: margin-left 0.3s ease-in-out;
@@ -124,12 +126,17 @@ gap: 0.5vw;
 .header {
   margin-bottom: 30px;
   background: white;
+  position: fixed;
+  top:0;
+  left:0;
+  z-index: 9;
+  text-align: center;
   padding: 20px 30px;
   border-radius: 12px;
   box-shadow: var(--shadow);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 }
 
 .header h1 {
@@ -495,6 +502,8 @@ gap: 0.5vw;
 
 /* ================== Footer ================== */
 .footer {
+  width: 100vw;
+  height:auto;
   text-align: center;
   margin-top: 50px;
   padding: 20px;
@@ -512,7 +521,8 @@ gap: 0.5vw;
 }
 
 .btn-secondary {
-  background-color: var(--accent);
+  /* background-color: var(--accent); */
+  background-color: #00bda5;
   color: white;
 }
 
@@ -623,8 +633,13 @@ gap: 0.5vw;
     position: relative;
     width: 30vw;
     max-width: 300px;
+    margin-top: 55%;
+    /* top:55%; */
+    /* height: auto; */
+    left: 0;
+    /* transform: translateY(-50%); */
     transition: all 0.3s ease;
-    z-index: 1000;
+    z-index: 7;
   }
 
   .sidebar.closed {
@@ -764,6 +779,7 @@ gap: 0.5vw;
   /* Ensure sidebar remains hidden even when 'open' on very small screens*/
   .sidebar.open {
     width: 40vw;
+    margin-top: 80%;
     /* transform: translateX(-100%); */
   } 
 }
@@ -771,7 +787,7 @@ gap: 0.5vw;
 /* Specific adjustment for very small screens (e.g., 320px) */
 @media screen and (max-width: 320px) {
  
-
+  
   .dashboard {
     padding: 10px; /* Further reduce padding for extremely small screens */
     

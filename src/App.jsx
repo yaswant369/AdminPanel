@@ -290,212 +290,281 @@ function App() {
   };
 
   return (
-    <div
-      className={`app   w-screen ${isSidebarOpen ? "appopen" : " appclose"}`}
-    >
-      {isSidebarOpen && (
-        <aside
-          onClick={(e) => {
-            if (window.innerWidth < 768) {
-              e.stopPropagation();
-              setIsSidebarOpen(false);
-            }
-            if (window.innerWidth >= 768) {
-              e.stopPropagation();
-              setIsSidebarOpen(true);
-            }
-          }}
-          className={`sidebar  ${isSidebarOpen ? "open" : "closed"}  `}
-        >
-          <img
-            src="http://uptoskills.com/wp-content/uploads/2023/04/hd-logo-iguru.png"
-            className="  logo"
-          />
-          <h2>Uptoskills Admin</h2>
-          <nav>
-            <div className="navIcons">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-              </svg>
-              <a
-                href="#students"
-                className={activeSection === "students" ? "active" : ""}
-                onClick={() => {
-                  setActiveSection("students");
-                  setIsSidebarOpen(false);
-                }}
-              >
-                Students
-              </a>
-            </div>
+    <div>
+      <header className="header">
+        {!isSidebarOpen && (
+          <div
+            className="hamburger-menu"
+            onClick={() => setIsSidebarOpen((prev) => !prev)}
+          >
+            ☰
+          </div>
+        )}
 
-            <div className="navIcons">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M3 21h18v-2H3v2zm16-4V3H5v14H3v2h18v-2h-2zm-2 0H7V5h10v12zM9 7h2v2H9V7zm4 0h2v2h-2V7zm-4 4h2v2H9v-2zm4 0h2v2h-2v-2z" />
-              </svg>
+        <h1 className="dashAdmin">Admin Panel (Uptoskills Team Only)</h1>
+      </header>
 
-              <a
-                href="#companies"
-                className={activeSection === "companies" ? "active" : ""}
-                onClick={() => {
-                  setActiveSection("companies");
-                  setIsSidebarOpen(false);
-                }}
-              >
-                Companies
-              </a>
-            </div>
-
-            <div className="navIcons">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z" />
-              </svg>
-
-              <a
-                href="#projects"
-                className={activeSection === "projects" ? "active" : ""}
-                onClick={() => {
-                  setActiveSection("projects");
-                  setIsSidebarOpen(false);
-                }}
-              >
-                Projects
-              </a>
-            </div>
-
-            <div className="navIcons">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M4 22h16v-2H4v2zm2-4h2V10H6v8zm4 0h2V4h-2v14zm4 0h2v-6h-2v6zm4 0h2v-8h-2v8z" />
-              </svg>
-
-              <a
-                href="#analytics"
-                className={activeSection === "analytics" ? "active" : ""}
-                onClick={() => {
-                  setActiveSection("analytics");
-                  setIsSidebarOpen(false);
-                }}
-              >
-                Analytics
-              </a>
-            </div>
-
-            <div className="navIcons">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M4 4h16v12H5.17L4 17.17V4zm0-2c-1.1 0-2 .9-2 2v20l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4z" />
-              </svg>
-
-              <a
-                href="#mentor"
-                className={activeSection === "mentor" ? "active" : ""}
-                onClick={() => {
-                  setActiveSection("mentor");
-                  setIsSidebarOpen(false);
-                }}
-              >
-                Mentor Reviews
-              </a>
-            </div>
-          </nav>
-        </aside>
-      )}
-
-      <main
-        className={`dashboard ${
-          !isSidebarOpen
-            ? "ml-0 p-[20px] w-[100%] absolute left-0 top-0  bg-red-700"
-            : ""
-        } `}
+      <div
+        className={`app   w-screen ${isSidebarOpen ? "appopen" : " appclose"}`}
       >
-        <header className="header">
-          {!isSidebarOpen && (
-            <div
-              className="hamburger-menu"
-              onClick={() => setIsSidebarOpen((prev) => !prev)}
-            >
-              ☰
-            </div>
-          )}
+        {isSidebarOpen && (
+          <aside
+            onClick={(e) => {
+              if (window.innerWidth < 768) {
+                e.stopPropagation();
+                setIsSidebarOpen(false);
+              }
+              if (window.innerWidth >= 768) {
+                e.stopPropagation();
+                setIsSidebarOpen(true);
+              }
+            }}
+            className={`sidebar  ${isSidebarOpen ? "open" : "closed"}  `}
+          >
+            <img
+              src="http://uptoskills.com/wp-content/uploads/2023/04/hd-logo-iguru.png"
+              className="  logo"
+            />
+            {/* <h2>Uptoskills Admin</h2> */}
+            <nav>
+              <div className="navIcons">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                </svg>
+                <a
+                  href="#students"
+                  className={activeSection === "students" ? "active" : ""}
+                  onClick={() => {
+                    setActiveSection("students");
+                    setIsSidebarOpen(false);
+                  }}
+                >
+                  Students
+                </a>
+              </div>
 
-          <h1 className="dashAdmin">Admin Panel (Uptoskills Team Only)</h1>
-        </header>
+              <div className="navIcons">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M3 21h18v-2H3v2zm16-4V3H5v14H3v2h18v-2h-2zm-2 0H7V5h10v12zM9 7h2v2H9V7zm4 0h2v2h-2V7zm-4 4h2v2H9v-2zm4 0h2v2h-2v-2z" />
+                </svg>
 
-        <section id="students" className="panel slide-in">
-          <h2>Manage Students 🧑‍🎓</h2>
-          {/* <input
+                <a
+                  href="#companies"
+                  className={activeSection === "companies" ? "active" : ""}
+                  onClick={() => {
+                    setActiveSection("companies");
+                    setIsSidebarOpen(false);
+                  }}
+                >
+                  Companies
+                </a>
+              </div>
+
+              <div className="navIcons">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z" />
+                </svg>
+
+                <a
+                  href="#projects"
+                  className={activeSection === "projects" ? "active" : ""}
+                  onClick={() => {
+                    setActiveSection("projects");
+                    setIsSidebarOpen(false);
+                  }}
+                >
+                  Projects
+                </a>
+              </div>
+
+              <div className="navIcons">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M4 22h16v-2H4v2zm2-4h2V10H6v8zm4 0h2V4h-2v14zm4 0h2v-6h-2v6zm4 0h2v-8h-2v8z" />
+                </svg>
+
+                <a
+                  href="#analytics"
+                  className={activeSection === "analytics" ? "active" : ""}
+                  onClick={() => {
+                    setActiveSection("analytics");
+                    setIsSidebarOpen(false);
+                  }}
+                >
+                  Analytics
+                </a>
+              </div>
+
+              <div className="navIcons">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M4 4h16v12H5.17L4 17.17V4zm0-2c-1.1 0-2 .9-2 2v20l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H4z" />
+                </svg>
+
+                <a
+                  href="#mentor"
+                  className={activeSection === "mentor" ? "active" : ""}
+                  onClick={() => {
+                    setActiveSection("mentor");
+                    setIsSidebarOpen(false);
+                  }}
+                >
+                  Mentor Reviews
+                </a>
+              </div>
+            </nav>
+          </aside>
+        )}
+
+        <main
+          className={`dashboard ${
+            !isSidebarOpen
+              ? "ml-0 p-[20px] w-[100%] absolute left-0 top-0  bg-red-700"
+              : ""
+          } `}
+        >
+          <section id="students" className="panel slide-in">
+            <h2>Manage Students </h2>
+            {/* <input
             type="text"
             placeholder="Search Students..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
           /> */}
-          <div className="Searching">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="mr-2 text-gray-500"
-            >
-              <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-            </svg>
-            <input
+            <div className="Searching">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="mr-2 text-gray-500"
+              >
+                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+              </svg>
+              <input
+                type="text"
+                placeholder="Search"
+                className="search-input  "
+              />
+            </div>
+            <div className="card-container">
+              {students
+                .filter((s) =>
+                  s.name.toLowerCase().includes(searchTerm.toLowerCase())
+                )
+                .map((student) => (
+                  <div
+                    key={student.id}
+                    className={`card ${student.status} fade-in`}
+                  >
+                    <h3>{student.name}</h3>
+                    {getActivityDetails(student)}
+                    <p>
+                      Status:{" "}
+                      <span className={`status-badge ${student.status}`}>
+                        {student.status}
+                      </span>
+                    </p>
+                    <div className="actions">
+                      <button
+                        onClick={() =>
+                          handleStudentApproval(student.id, "approved")
+                        }
+                        className="btn btn-success"
+                      >
+                        Approve
+                      </button>
+                      <button
+                        onClick={() =>
+                          handleStudentApproval(student.id, "rejected")
+                        }
+                        className="btn btn-danger"
+                      >
+                        Reject
+                      </button>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </section>
+
+          <section id="companies" className="panel slide-in">
+            <h2>Manage Companies </h2>
+            <div className="add-item-form ">
+              {/* <input
               type="text"
-              placeholder="Search"
-              className="search-input  "
-            />
-          </div>
-          <div className="card-container">
-            {students
-              .filter((s) =>
-                s.name.toLowerCase().includes(searchTerm.toLowerCase())
-              )
-              .map((student) => (
-                <div
-                  key={student.id}
-                  className={`card ${student.status} fade-in`}
+              value={newCompany}
+              onChange={(e) => setNewCompany(e.target.value)}
+              placeholder="Add new company name..."
+            /> */}
+
+              <div className="Searching">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className=""
                 >
-                  <h3>{student.name}</h3>
-                  {getActivityDetails(student)}
+                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                </svg>
+                <input
+                  type="text"
+                  value={newCompany}
+                  onChange={(e) => setNewCompany(e.target.value)}
+                  placeholder="Add new company name..."
+                  className="search-input "
+                />
+              </div>
+              <button onClick={addCompany} className="btn btn-primary">
+                Add Company
+              </button>
+            </div>
+            <div className="card-container">
+              {companies.map((company) => (
+                <div
+                  key={company.id}
+                  className={`card ${company.status} fade-in`}
+                >
+                  <h3>{company.name}</h3>
                   <p>
                     Status:{" "}
-                    <span className={`status-badge ${student.status}`}>
-                      {student.status}
+                    <span className={`status-badge ${company.status}`}>
+                      {company.status}
                     </span>
                   </p>
                   <div className="actions">
                     <button
                       onClick={() =>
-                        handleStudentApproval(student.id, "approved")
+                        handleCompanyApproval(company.id, "approved")
                       }
                       className="btn btn-success"
                     >
@@ -503,7 +572,7 @@ function App() {
                     </button>
                     <button
                       onClick={() =>
-                        handleStudentApproval(student.id, "rejected")
+                        handleCompanyApproval(company.id, "rejected")
                       }
                       className="btn btn-danger"
                     >
@@ -512,325 +581,250 @@ function App() {
                   </div>
                 </div>
               ))}
-          </div>
-        </section>
-
-        <section id="companies" className="panel slide-in">
-          <h2>Manage Companies 🏢</h2>
-          <div className="add-item-form ">
-            {/* <input
-              type="text"
-              value={newCompany}
-              onChange={(e) => setNewCompany(e.target.value)}
-              placeholder="Add new company name..."
-            /> */}
-
-            <div className="Searching">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className=""
-              >
-                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-              </svg>
-              <input
-                type="text"
-                value={newCompany}
-                onChange={(e) => setNewCompany(e.target.value)}
-                placeholder="Add new company name..."
-                className="search-input "
-              />
             </div>
-            <button onClick={addCompany} className="btn btn-primary">
-              Add Company
-            </button>
-          </div>
-          <div className="card-container">
-            {companies.map((company) => (
-              <div
-                key={company.id}
-                className={`card ${company.status} fade-in`}
-              >
-                <h3>{company.name}</h3>
-                <p>
-                  Status:{" "}
-                  <span className={`status-badge ${company.status}`}>
-                    {company.status}
-                  </span>
-                </p>
-                <div className="actions">
-                  <button
-                    onClick={() =>
-                      handleCompanyApproval(company.id, "approved")
-                    }
-                    className="btn btn-success"
-                  >
-                    Approve
-                  </button>
-                  <button
-                    onClick={() =>
-                      handleCompanyApproval(company.id, "rejected")
-                    }
-                    className="btn btn-danger"
-                  >
-                    Reject
-                  </button>
+          </section>
+
+          <section id="projects" className="panel slide-in">
+            <h2>Manage Projects </h2>
+            <div className="add-item-form">
+              <div className="Searching">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className=""
+                >
+                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                </svg>
+                <input
+                  type="text"
+                  placeholder="Project title..."
+                  value={newProjectTitle}
+                  onChange={(e) => setNewProjectTitle(e.target.value)}
+                  className="search-input "
+                />
+              </div>
+
+              <div className="Searching">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className=""
+                >
+                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                </svg>
+                <input
+                  type="text"
+                  placeholder="Mentor name..."
+                  value={newProjectMentor}
+                  onChange={(e) => setNewProjectMentor(e.target.value)}
+                  className="search-input "
+                />
+              </div>
+
+              <div className="Searching">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className=""
+                >
+                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                </svg>
+                <input
+                  type="number"
+                  placeholder="Number of students..."
+                  value={newProjectStudents}
+                  onChange={(e) => setNewProjectStudents(e.target.value)}
+                  min="0"
+                  className="search-input "
+                />
+              </div>
+              <button onClick={addProject} className="btn btn-primary">
+                Add Project
+              </button>
+            </div>
+            <div className="card-container">
+              {projects.map((project) => (
+                <div key={project.id} className="card fade-in">
+                  <h3>{project.title}</h3>
+                  <p>
+                    Mentor: <strong>{project.mentor}</strong>
+                  </p>
+                  <p>
+                    Students: <strong>{project.students}</strong>
+                  </p>
+                  <div className="actions">
+                    <button
+                      onClick={() => removeProject(project.id)}
+                      className="btn btn-danger"
+                    >
+                      Remove
+                    </button>
+                    <button className="btn btn-secondary">Upskill</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="analytics" className="panel slide-in">
+            <h2>Analytics - Insights Overview </h2>
+            <div className="analytics-grid">
+              <div className="analytics-card fade-in">
+                <h3>Total Hires</h3>
+                <p className="metric-value">{analytics.totalHires}</p>
+                <div className="bar-wrapper">
+                  <div
+                    className="bar-fill"
+                    style={{
+                      width: `${Math.min(
+                        (analytics.totalHires / 200) * 100,
+                        100
+                      )}%`,
+                    }} // Max 200 hires for visual scale
+                  ></div>
                 </div>
               </div>
-            ))}
-          </div>
-        </section>
 
-        <section id="projects" className="panel slide-in">
-          <h2>Manage Projects 💡</h2>
-          <div className="add-item-form">
-            <div className="Searching">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className=""
-              >
-                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-              </svg>
-              <input
-                type="text"
-                placeholder="Project title..."
-                value={newProjectTitle}
-                onChange={(e) => setNewProjectTitle(e.target.value)}
-                className="search-input "
-              />
-            </div>
+              <div className="analytics-card fade-in">
+                <h3>Top Companies</h3>
+                <ul className="top-list">
+                  {analytics.topCompanies.map((company, i) => (
+                    <li key={i}>
+                      <span role="img" aria-label="company"></span> {company}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-            <div className="Searching">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className=""
-              >
-                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-              </svg>
-              <input
-                type="text"
-                placeholder="Mentor name..."
-                value={newProjectMentor}
-                onChange={(e) => setNewProjectMentor(e.target.value)}
-                className="search-input "
-              />
-            </div>
+              <div className="analytics-card fade-in">
+                <h3>Avg. Package</h3>
+                <p className="metric-value">{analytics.avgPlacement}</p>
+              </div>
 
-            <div className="Searching">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className=""
-              >
-                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-              </svg>
-              <input
-                type="number"
-                placeholder="Number of students..."
-                value={newProjectStudents}
-                onChange={(e) => setNewProjectStudents(e.target.value)}
-                min="0"
-                className="search-input "
-              />
-            </div>
-            <button onClick={addProject} className="btn btn-primary">
-              Add Project
-            </button>
-          </div>
-          <div className="card-container">
-            {projects.map((project) => (
-              <div key={project.id} className="card fade-in">
-                <h3>{project.title}</h3>
-                <p>
-                  Mentor: <strong>{project.mentor}</strong>
+              <div className="analytics-card fade-in">
+                <h3>Most Popular Tech</h3>
+                <p className="metric-value">
+                  <span role="img" aria-label="fire"></span>{" "}
+                  {analytics.mostPopularTech}
                 </p>
-                <p>
-                  Students: <strong>{project.students}</strong>
+              </div>
+
+              <div className="analytics-card fade-in">
+                <h3>Top Mentor</h3>
+                <p className="metric-value">
+                  <span role="img" aria-label="trophy"></span>{" "}
+                  {analytics.bestMentor}
                 </p>
-                <div className="actions">
-                  <button
-                    onClick={() => removeProject(project.id)}
-                    className="btn btn-danger"
-                  >
-                    Remove
-                  </button>
-                  <button className="btn btn-secondary">Upskill</button>
+              </div>
+            </div>
+
+            <div className="charts-container">
+              <div className="chart-card fade-in">
+                <h3>Monthly Hire Trend</h3>
+                <Bar
+                  data={hireTrendData}
+                  options={{ responsive: true, maintainAspectRatio: false }}
+                />
+              </div>
+              <div className="chart-card fade-in">
+                <h3>Placement Package Distribution</h3>
+                <Pie
+                  data={placementDistributionData}
+                  options={{ responsive: true, maintainAspectRatio: false }}
+                />
+              </div>
+            </div>
+          </section>
+
+          <section id="mentor" className="panel slide-in">
+            <h2>Mentor Reviews </h2>
+
+            <div className="add-item-form">
+              <div className="Searching">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className=""
+                >
+                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                </svg>
+                <input
+                  type="text"
+                  placeholder="Mentor Name"
+                  value={newReviewMentor}
+                  onChange={(e) => setNewReviewMentor(e.target.value)}
+                  className="search-input "
+                />
+              </div>
+
+              <div className="Searching">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className=""
+                >
+                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                </svg>
+                <input
+                  type="text"
+                  placeholder="Review Text"
+                  value={newReviewText}
+                  onChange={(e) => setNewReviewText(e.target.value)}
+                  className="search-input "
+                />
+              </div>
+
+              <div className="Searching">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className=""
+                >
+                  <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                </svg>
+                <input
+                  type="number"
+                  placeholder="Rating (0-5)"
+                  value={newReviewRating}
+                  onChange={(e) => setNewReviewRating(e.target.value)}
+                  min="0"
+                  max="5"
+                  step="0.1"
+                  className="search-input "
+                />
+              </div>
+              <button onClick={addMentorReview} className="btn btn-primary">
+                Add Review
+              </button>
+            </div>
+
+            <div className="reviews-container">
+              {mentorReviews.map((review) => (
+                <div key={review.id} className="review fade-in">
+                  <h4>{review.mentor}</h4>
+                  <p className="feedback-text">"{review.feedback}"</p>
+                  <div className="stars">{renderStars(review.rating)}</div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="analytics" className="panel slide-in">
-          <h2>Analytics - Insights Overview 📊</h2>
-          <div className="analytics-grid">
-            <div className="analytics-card fade-in">
-              <h3>Total Hires</h3>
-              <p className="metric-value">{analytics.totalHires}</p>
-              <div className="bar-wrapper">
-                <div
-                  className="bar-fill"
-                  style={{
-                    width: `${Math.min(
-                      (analytics.totalHires / 200) * 100,
-                      100
-                    )}%`,
-                  }} // Max 200 hires for visual scale
-                ></div>
-              </div>
+              ))}
             </div>
-
-            <div className="analytics-card fade-in">
-              <h3>Top Companies</h3>
-              <ul className="top-list">
-                {analytics.topCompanies.map((company, i) => (
-                  <li key={i}>
-                    <span role="img" aria-label="company">
-                      🏢
-                    </span>{" "}
-                    {company}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="analytics-card fade-in">
-              <h3>Avg. Package</h3>
-              <p className="metric-value">{analytics.avgPlacement}</p>
-            </div>
-
-            <div className="analytics-card fade-in">
-              <h3>Most Popular Tech</h3>
-              <p className="metric-value">
-                <span role="img" aria-label="fire">
-                  🔥
-                </span>{" "}
-                {analytics.mostPopularTech}
-              </p>
-            </div>
-
-            <div className="analytics-card fade-in">
-              <h3>Top Mentor</h3>
-              <p className="metric-value">
-                <span role="img" aria-label="trophy">
-                  🏆
-                </span>{" "}
-                {analytics.bestMentor}
-              </p>
-            </div>
-          </div>
-
-          <div className="charts-container">
-            <div className="chart-card fade-in">
-              <h3>Monthly Hire Trend</h3>
-              <Bar
-                data={hireTrendData}
-                options={{ responsive: true, maintainAspectRatio: false }}
-              />
-            </div>
-            <div className="chart-card fade-in">
-              <h3>Placement Package Distribution</h3>
-              <Pie
-                data={placementDistributionData}
-                options={{ responsive: true, maintainAspectRatio: false }}
-              />
-            </div>
-          </div>
-        </section>
-
-        <section id="mentor" className="panel slide-in">
-          <h2>Mentor Reviews ⭐</h2>
-
-          <div className="add-item-form">
-            <div className="Searching">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className=""
-              >
-                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-              </svg>
-              <input
-                type="text"
-                placeholder="Mentor Name"
-                value={newReviewMentor}
-                onChange={(e) => setNewReviewMentor(e.target.value)}
-                className="search-input "
-              />
-            </div>
-
-            <div className="Searching">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className=""
-              >
-                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-              </svg>
-              <input
-                type="text"
-                placeholder="Review Text"
-                value={newReviewText}
-                onChange={(e) => setNewReviewText(e.target.value)}
-                className="search-input "
-              />
-            </div>
-
-            <div className="Searching">
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className=""
-              >
-                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-              </svg>
-              <input
-                type="number"
-                placeholder="Rating (0-5)"
-                value={newReviewRating}
-                onChange={(e) => setNewReviewRating(e.target.value)}
-                min="0"
-                max="5"
-                step="0.1"
-                className="search-input "
-              />
-            </div>
-            <button onClick={addMentorReview} className="btn btn-primary">
-              Add Review
-            </button>
-          </div>
-
-          <div className="reviews-container">
-            {mentorReviews.map((review) => (
-              <div key={review.id} className="review fade-in">
-                <h4>{review.mentor}</h4>
-                <p className="feedback-text">"{review.feedback}"</p>
-                <div className="stars">{renderStars(review.rating)}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <footer className="footer">
-          <p>&copy; 2025 Uptoskills Team. All rights reserved. ✨</p>
-        </footer>
-      </main>
+          </section>
+        </main>
+      </div>
+      <footer className="footer">
+        <p>&copy; 2025 Uptoskills Team. All rights reserved. ✨</p>
+      </footer>
     </div>
   );
 }
