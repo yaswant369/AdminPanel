@@ -11,6 +11,8 @@ import {
   Legend,
 } from "chart.js";
 
+import DashboardMain from "../DashboardMain";
+
 // Register Chart.js components
 ChartJS.register(
   CategoryScale,
@@ -268,8 +270,8 @@ function App() {
       {
         label: "Hires per Month",
         data: analytics.hireTrend.map((data) => data.hires),
-        backgroundColor: "rgba(0, 89, 255, 0.6)",
-        borderColor: "rgba(0, 89, 255, 1)",
+        backgroundColor: "rgba(254, 109, 53,0.6)",
+        borderColor: "rgba(254, 109, 53,1)",
         borderWidth: 1,
       },
     ],
@@ -282,7 +284,15 @@ function App() {
       {
         label: "Placement Distribution",
         data: Object.values(analytics.placementDistribution),
-        backgroundColor: ["#0059ff", "#00d4ff", "#2ecc71", "#f1c40f"],
+        backgroundColor: [
+          "#9370DB",
+          "rgba(0, 208, 181,1)",
+          "rgba(254, 109, 53,0.6)",
+          "#FF6384",
+          // Orange // Purple
+          // Pink-Red (new)
+          ,
+        ],
         borderColor: "#ffffff",
         borderWidth: 2,
       },
@@ -450,6 +460,7 @@ function App() {
               : ""
           } `}
         >
+          <DashboardMain />
           <section id="students" className="panel slide-in">
             <h2>Manage Students </h2>
             {/* <input

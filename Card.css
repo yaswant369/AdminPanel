@@ -1,9 +1,10 @@
  
 .card {
   background-color: var(--card-background);
+
   border-radius: 12px;
   padding: 20px 25px;
-  box-shadow: var(--box-shadow);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   gap: 20px;
@@ -36,7 +37,7 @@
 }
 
 .card-title {
-  font-size: 0.9rem;
+  font-size: 0.8vh;
   color: var(--text-color);
   opacity: 0.7;
   margin-bottom: 5px;
