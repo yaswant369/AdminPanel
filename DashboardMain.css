@@ -1,0 +1,459 @@
+/* src/components/DashboardMain.css */
+.dashboard-main {
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* Space between main sections */
+}
+
+/* General card styling for consistency across dashboard sections */
+.card {
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+  padding: 25px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-header h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.filter-dropdown {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--background-light);
+  color: var(--text-color);
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.filter-dropdown:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(106, 98, 255, 0.2);
+}
+
+/* Dashboard Cards (Top Row) */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px;
+}
+
+/* Flex Section for two-column layouts */
+.dashboard-section-flex {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.dashboard-section-flex > .card {
+  flex: 1; /* Allow cards to grow and shrink */
+  min-width: 300px; /* Minimum width before wrapping */
+}
+
+/* Top Courses Card */
+.top-courses-card .course-list {
+  list-style: none;
+  padding: 0;
+}
+
+.top-courses-card .course-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer; /* Indicate clickable */
+  transition: background-color 0.2s ease;
+}
+
+.top-courses-card .course-list li:hover {
+    background-color: var(--background-light);
+    border-radius: 5px;
+}
+
+.top-courses-card .course-list li:last-child {
+  border-bottom: none;
+}
+
+.top-courses-card .course-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.top-courses-card .course-text-icon { /* Styling for the text-based "icon" */
+  font-size: 1.3rem;
+  /* color property set inline in JSX */
+}
+
+.top-courses-card .views {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+/* Assignment Progress Card */
+.assignment-progress-card .progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.assignment-progress-card .progress-item {
+  margin-bottom: 10px;
+}
+
+.assignment-progress-card .progress-details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+}
+
+.assignment-progress-card .progress-text {
+  font-weight: 500;
+}
+
+.assignment-progress-card .progress-tasks {
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.assignment-progress-card .progress-bar-container {
+  background-color: var(--background-light);
+  border-radius: 10px;
+  height: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.assignment-progress-card .progress-bar {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease-in-out;
+}
+
+.assignment-progress-card .progress-percentage {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* Upcoming Webinar Section */
+.upcoming-webinar-section {
+  padding: 0; /* Remove padding to make placeholder full width */
+  overflow: hidden; /* For rounded corners on placeholder */
+}
+
+.webinar-content {
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+  gap: 25px;
+  flex-wrap: wrap; /* Allow content to wrap */
+  padding: 25px; /* Add padding inside */
+}
+
+.webinar-thumbnail-placeholder { /* Styling for the text-based placeholder */
+  width: 250px;
+  height: 150px;
+  border-radius: 12px;
+  background-color: var(--background-dark); /* Dark background for visibility */
+  color: var(--text-color-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+
+.webinar-details {
+  flex-grow: 1;
+}
+
+.webinar-details h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.webinar-title {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: 15px;
+}
+
+.webinar-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+/* No specific icon styling needed for emojis, they're text */
+/* .webinar-meta .meta-icon {
+  font-size: 1.1rem;
+  margin-right: 5px;
+  vertical-align: middle;
+} */
+
+.join-event-button {
+  padding: 12px 25px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* No specific icon styling needed for emojis */
+/* .join-event-button .button-icon {
+  font-size: 1.2rem;
+} */
+
+/* Topic Interest Card */
+.topic-interest-card .chart-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center; /* Center chart and legend */
+}
+
+.topic-interest-card .topic-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.topic-interest-card .topic-item {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.topic-interest-card .topic-name {
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+.topic-interest-card .topic-value {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.topic-interest-card .topic-language {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+/* Popular Instructors Card */
+.popular-instructors-card .instructor-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.popular-instructors-card .instructor-table th,
+.popular-instructors-card .instructor-table td {
+  padding: 12px 0;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.popular-instructors-card .instructor-table th {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.popular-instructors-card .instructor-table td {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.popular-instructors-card .instructor-table tr:last-child td {
+  border-bottom: none;
+}
+
+.instructor-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.instructor-text-avatar { /* Styling for the text-based avatar */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--background-dark); /* Placeholder background */
+  color: var(--text-color-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.instructor-info p {
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.instructor-info small {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+/* Student Growth Card (Recharts) */
+.student-growth-card .chart-container {
+  width: 100%;
+  height: 350px; /* Fixed height for the chart */
+}
+
+ 
+.admin-panel-section h4 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+}
+
+.admin-panel-section ul {
+  margin-bottom: 20px;
+  padding-left: 20px; /* Indent list items */
+}
+
+.admin-panel-section li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  list-style-type: disc; /* Use bullets for list items */
+  line-height: 1.5;
+}
+
+.admin-panel-section .full-width-button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .dashboard-main {
+    padding: 15px;
+  }
+  .dashboard-cards {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .dashboard-section-flex {
+    flex-direction: column; /* Stack sections vertically */
+    gap: 20px;
+  }
+  .dashboard-section-flex > .card {
+    min-width: unset; /* Remove min-width on small screens */
+    width: 100%;
+  }
+  .webinar-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .webinar-thumbnail-placeholder {
+    width: 100%; /* Full width thumbnail on small screens */
+    height: auto;
+    max-height: 150px; /* Ensure it doesn't get too tall */
+  }
+  .webinar-meta {
+    justify-content: center;
+  }
+  .topic-interest-card .chart-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 10px;
+  }
+  .search-bar {
+    padding: 6px 10px;
+  }
+  .search-bar input {
+    font-size: 0.9rem;
+  }
+  .header-right {
+    gap: 8px;
+  }
+  .icon-button {
+    font-size: 1.2rem;
+    padding: 6px;
+  }
+  .user-text-icon {
+    font-size: 2rem;
+  }
+  .card {
+    padding: 15px 20px;
+  }
+  .card-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.8rem;
+  }
+  .card-value {
+    font-size: 1.8rem;
+  }
+  .dashboard-main {
+    padding: 10px;
+    gap: 20px;
+  }
+  .card-header h3 {
+    font-size: 1rem;
+  }
+  .filter-dropdown {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+  .course-info span, .views {
+    font-size: 0.9rem;
+  }
+  .webinar-details h3 {
+    font-size: 1.1rem;
+  }
+  .join-event-button {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+  .instructor-table th, .instructor-table td {
+    padding: 8px 0;
+    font-size: 0.9rem;
+  }
+  .admin-panel-section li {
+    font-size: 0.9rem;
+  }
+}
