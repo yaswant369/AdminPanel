@@ -657,22 +657,8 @@ gap: 0.5vw;
   }
 
  
-  /* .sidebar {
-    width: 0;
-    overflow: hidden;
-   
-    transition: width 0.3s ease;
-  }
-  .sidebar.open {
-    width: 70vw;
-
-    max-width: 300px;
-
-  }
-
-  .sidebar.closed {
-    left: -100%;
-  } 
+ 
+ 
 
  
   
