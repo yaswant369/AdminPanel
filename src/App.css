@@ -579,14 +579,7 @@ gap: 0.5vw;
 
 /* Medium devices (Tablets, small laptops) */
 @media screen and (max-width: 1024px) {
-  /* .sidebar {
-    background: linear-gradient(to bottom, var(--primary), #0047cc);
-    color: white;
-    width: var(--sidebar-width, 250px);
-    height: 100vh;
-    transition: all 0.3s ease-in-out;
-    z-index: 1000;
-  } */
+
 
   .sidebar {
     position: relative;
@@ -663,24 +656,7 @@ gap: 0.5vw;
    
     transition: width 0.3s ease;
   }
-  .sidebar.open {
-    width: 70vw;
-
-    max-width: 300px;
-
-  }
-
-  .sidebar.closed {
-    left: -100%;
-  } 
-
  
-  
-  .dashboard {
-    margin-left: 0 !important;
-    flex: 1;
-    transition: all 0.3s ease;
-  } */
   .hamburger-menu{
    
     width: 20%;
@@ -693,8 +669,7 @@ gap: 0.5vw;
 
   
   .hamburger-menu {
-    display: block; /* Show hamburger menu on mobile */
-  }
+
 
   /* .header h1 {
     font-size: 1.5rem;
