@@ -1,4 +1,4 @@
-/* ================== Reset ================== */
+
 @import "tailwindcss";
 * {
   margin: 0;
@@ -7,7 +7,7 @@
   width: 100%; /* Be cautious with this: `width: 100%;` on all elements can cause layout issues, especially with padding/borders. It's often better to apply this selectively or rely on block-level default behavior. For this specific case, it might be intended for some elements, but review its impact. */
 }
 
-/* ================== Root ================== */
+
 :root {
   --primary: #0059ff;
   --accent: #00d4ff;
@@ -624,10 +624,10 @@ gap: 0.5vw;
 /* Small devices (Mobile phones, up to 768px) */
 @media screen and (max-width: 768px) {
   .sidebar.open {
-    position: relative;
+  
     width: 30vw;
     max-width: 300px;
-    margin-top: 55%;
+    /* margin-top: 55%; */
     /* top:55%; */
     /* height: auto; */
     left: 0;
@@ -650,12 +650,18 @@ gap: 0.5vw;
   }
 
  
+<<<<<<< HEAD
   /* .sidebar {
     width: 0;
     overflow: hidden;
    
     transition: width 0.3s ease;
   }
+=======
+ 
+ 
+
+>>>>>>> AdminPanel-Dashboard/Kanchan/Team6
  
   .hamburger-menu{
    
@@ -663,6 +669,7 @@ gap: 0.5vw;
   }
 
   .header {
+    display: flex;
      justify-content: space-evenly;
   }
   
@@ -755,7 +762,7 @@ gap: 0.5vw;
   /* Ensure sidebar remains hidden even when 'open' on very small screens*/
   .sidebar.open {
     width: 40vw;
-    margin-top: 80%;
+    /* margin-top: 80%; */
     /* transform: translateX(-100%); */
   } 
 }

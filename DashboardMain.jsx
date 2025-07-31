@@ -14,7 +14,6 @@ import {
 } from "react-icons/fa";
 
 import {
-  BarChart,
   Bar,
   XAxis,
   YAxis,
