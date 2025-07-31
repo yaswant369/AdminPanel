@@ -476,7 +476,7 @@ function App() {
         <main
           className={`dashboard ${
             !isSidebarOpen
-              ? "ml-0 p-[20px] w-[100%] absolute left-0 top-0  bg-red-700"
+              ? "ml-0 p-[20px] w-[100%] absolute left-0 top-0 "
               : ""
           } `}
         >
