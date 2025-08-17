@@ -1,4 +1,4 @@
- 
+/*  
 .card {
   background-color: var(--card-background);
 
@@ -25,13 +25,13 @@
   justify-content: center;
   color: white;
   flex-shrink: 0; /* Prevent icon from shrinking */
-}
+/* } */
 
-.card-text-icon { /* Styling for the text-based "icon" */
-  font-size: 2rem;
-}
+/* .card-text-icon { /* Styling for the text-based "icon" */
+  /* font-size: 2rem; 
+} */
 
-.card-content {
+/* .card-content {
   display: flex;
   flex-direction: column;
 }
@@ -49,11 +49,12 @@
   font-size: 2.2rem;
   font-weight: 700;
   color: var(--text-color);
-  margin-bottom: 5px;
-  line-height: 1; /* Adjust line height for big numbers */
-}
+  margin-bottom: 5px; */
+  /* line-height: 1; */
+  /* Adjust line height for big numbers */
+/* }
 
 .card-percentage {
   font-size: 0.9rem;
   font-weight: 500;
-}
+}  */

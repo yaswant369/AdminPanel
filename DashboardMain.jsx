@@ -1,6 +1,5 @@
 import React from "react";
-import Card from "./Card"; // Import the Card component
-import "./DashboardMain.css";
+import Card from "./Card";
 import {
   FaBook,
   FaLaptopCode,
@@ -14,31 +13,15 @@ import {
 } from "react-icons/fa";
 
 import {
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
   ResponsiveContainer,
-  LineChart,
-  Line,
   PieChart,
   Pie,
   Cell,
+  Tooltip,
+  Legend,
 } from "recharts";
 
-// Dummy Data for Charts
-const studentData = [
-  { name: "Jan", students: 400, teachers: 240 },
-  { name: "Feb", students: 300, teachers: 139 },
-  { name: "Mar", students: 200, teachers: 980 },
-  { name: "Apr", students: 278, teachers: 390 },
-  { name: "May", students: 189, teachers: 480 },
-  { name: "Jun", students: 239, teachers: 380 },
-  { name: "Jul", students: 349, teachers: 430 },
-];
-
+// Dummy Data
 const courseProgressData = [
   { name: "User Experience Design", value: 72, tasks: 120, color: "#8884d8" },
   { name: "Basic Fundamentals", value: 48, tasks: 32, color: "#82ca9d" },
@@ -58,40 +41,30 @@ const popularInstructors = [
   { name: "Maven Analytics", courses: 18, role: "React Native" },
 ];
 
-// Recharts Pie Chart Colors
 const PIE_COLORS = [
-  "rgba(254, 109, 53,0.5)", // Indigo
-  "rgba(0, 208, 181,0.5)", // Yellow
-  "rgba(76, 175, 80, 0.5)", // Green
-  "rgba(244, 67, 54, 0.5)", // Red
+  "rgba(254, 109, 53,0.5)",
+  "rgba(0, 208, 181,0.5)",
+  "rgba(76, 175, 80, 0.5)",
+  "rgba(244, 67, 54, 0.5)",
 ];
 
 const DashboardMain = () => {
-  // Event handlers for interactivity (logging to console for demonstration)
   const handleDropdownChange = (e, sectionName) => {
     console.log(`Dropdown in ${sectionName} changed to:`, e.target.value);
-    // Add filtering logic here
   };
 
   const handleCourseItemClick = (courseName) => {
     console.log(`Course item clicked: ${courseName}`);
-    // Add navigation or detailed view logic
   };
 
   const handleJoinEventClick = () => {
     console.log("Join The Event button clicked!");
-    // Add logic to open webinar link or modal
-  };
-
-  const handleGoToFullAdminClick = () => {
-    console.log("Go to Full Admin Settings button clicked!");
-    // Add navigation to admin panel
   };
 
   return (
-    <main className="dashboard-main">
-      {/* Top Cards Section */}
-      <section className="dashboard-cards">
+    <main className="flex-grow p-4 sm:p-6 flex flex-col gap-6">
+      {/* Top Cards */}
+      <section className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         <Card
           title="Total Students"
           value="563k"
@@ -122,140 +95,96 @@ const DashboardMain = () => {
         />
       </section>
 
-      {/* Top Courses & Assignment Progress Section */}
-      <section className="dashboard-section-flex">
-        <div className="top-courses-card card">
-          <div className="card-header">
-            <h3>Top Courses</h3>
+      {/* Top Courses & Assignment Progress */}
+      <section className="flex flex-col lg:flex-row gap-6">
+        {/* Top Courses */}
+        <div className="flex-1 bg-white rounded-xl shadow-md p-5">
+          <div className="flex justify-between items-center mb-4 pb-2 border-b border-zinc-400">
+            <h3 className="text-lg sm:text-xl font-semibold text-zinc-800">
+              Top Courses
+            </h3>
             <select
-              className="filter-dropdown"
+              className="px-3 py-2 rounded-lg border border-zinc-300 text-sm text-zinc-800 focus:ring-2 focus:ring-[rgba(106,98,255,0.2)] outline-none"
               onChange={(e) => handleDropdownChange(e, "Top Courses")}
             >
               <option value="this_month">This Month</option>
               <option value="last_month">Last Month</option>
             </select>
           </div>
-          <ul className="course-list">
-            <li
-              onClick={() =>
-                handleCourseItemClick("Videography Basic Design Course")
-              }
-            >
-              <div className="course-info">
-                <span
-                  className="course-text-icon"
-                  style={{
-                    padding: "1vh",
-                    width: "4vw",
-                    color: "rgba(106, 98, 255, 0.9)",
-                    backgroundColor: "rgba(106, 98, 255, 0.4)",
-                    textAlign: "center",
-                  }}
-                >
-                  <FaBook />
-                </span>
-                <span>Videography Basic Design Course</span>
-              </div>
-              <span className="views">1.2K Views</span>
-            </li>
 
-            <li
-              onClick={() =>
-                handleCourseItemClick("Basic Front-end Development Course")
-              }
-            >
-              <div className="course-info">
-                <span
-                  className="course-text-icon"
-                  style={{
-                    padding: "1vh",
-                    width: "4vw",
-                    color: "rgba(255, 187, 40, 0.8)",
-                    backgroundColor: "rgba(255, 187, 40, 0.2)",
-                    textAlign: "center",
-                  }}
-                >
-                  <FaLaptopCode />
+          <ul className="space-y-3">
+            {[
+              {
+                name: "Videography Basic Design Course",
+                views: "1.2K Views",
+                icon: <FaBook />,
+                color: "rgba(106, 98, 255, 0.9)",
+                bg: "rgba(106, 98, 255, 0.4)",
+              },
+              {
+                name: "Basic Front-end Development Course",
+                views: "1.5K Views",
+                icon: <FaLaptopCode />,
+                color: "rgba(255, 187, 40, 0.8)",
+                bg: "rgba(255, 187, 40, 0.2)",
+              },
+              {
+                name: "Basic Fundamentals of Photography",
+                views: "978 Views",
+                icon: <FaCamera />,
+                color: "rgba(76, 175, 80, 0.8)",
+                bg: "rgba(76, 175, 80, 0.2)",
+              },
+              {
+                name: "Advance Dribble Base Visual Design",
+                views: "765 Views",
+                icon: <FaPalette />,
+                color: "rgba(244, 67, 54, 0.8)",
+                bg: "rgba(244, 67, 54, 0.2)",
+              },
+              {
+                name: "Your First Singing Lesson",
+                views: "3.4K Views",
+                icon: <FaMicrophone />,
+                color: "rgba(0, 255, 255, 1)",
+                bg: "rgba(0, 255, 255, 0.2)",
+              },
+            ].map((course, index) => (
+              <li
+                key={index}
+                className="flex justify-between items-center p-3 border-b border-zinc-400 cursor-pointer hover:bg-zinc-200 hover:rounded-md transition-colors"
+                onClick={() => handleCourseItemClick(course.name)}
+              >
+                <div className="flex items-center gap-2.5 font-medium text-base">
+                  <span
+                    className="flex justify-center items-center text-xl rounded-md"
+                    style={{
+                      padding: "0.5rem",
+                      width: "2.5rem",
+                      color: course.color,
+                      backgroundColor: course.bg,
+                    }}
+                  >
+                    {course.icon}
+                  </span>
+                  <span>{course.name}</span>
+                </div>
+                <span className="text-sm text-[var(--text-color)] opacity-80">
+                  {course.views}
                 </span>
-                <span>Basic Front-end Development Course</span>
-              </div>
-              <span className="views">1.5K Views</span>
-            </li>
-
-            <li
-              onClick={() =>
-                handleCourseItemClick("Basic Fundamentals of Photography")
-              }
-            >
-              <div className="course-info">
-                <span
-                  className="course-text-icon"
-                  style={{
-                    padding: "1vh",
-                    width: "4vw",
-                    color: "rgba(76, 175, 80, 0.8)",
-                    backgroundColor: "rgba(76, 175, 80, 0.2)",
-                    textAlign: "center",
-                  }}
-                >
-                  <FaCamera />
-                </span>
-                <span>Basic Fundamentals of Photography</span>
-              </div>
-              <span className="views">978 Views</span>
-            </li>
-
-            <li
-              onClick={() =>
-                handleCourseItemClick("Advance Dribble Base Visual Design")
-              }
-            >
-              <div className="course-info">
-                <span
-                  className="course-text-icon"
-                  style={{
-                    padding: "1vh",
-                    width: "4vw",
-                    color: "rgba(244, 67, 54, 0.8)",
-                    backgroundColor: "rgba(244, 67, 54, 0.2)",
-                    textAlign: "center",
-                  }}
-                >
-                  <FaPalette />
-                </span>
-                <span>Advance Dribble Base Visual Design</span>
-              </div>
-              <span className="views">765 Views</span>
-            </li>
-
-            <li
-              onClick={() => handleCourseItemClick("Your First Singing Lesson")}
-            >
-              <div className="course-info">
-                <span
-                  className="course-text-icon"
-                  style={{
-                    padding: "1vh",
-                    width: "4vw",
-                    color: "rgba(0, 255, 255, 1)",
-                    backgroundColor: "rgba(0, 255, 255, 0.2)",
-                    textAlign: "center",
-                  }}
-                >
-                  <FaMicrophone />
-                </span>
-                <span>Your First Singing Lesson</span>
-              </div>
-              <span className="views">3.4K Views</span>
-            </li>
+              </li>
+            ))}
           </ul>
         </div>
 
-        <div className="assignment-progress-card card">
-          <div className="card-header">
-            <h3>Assignment Progress</h3>
+        {/* Assignment Progress */}
+        <div className="flex-1 bg-white rounded-xl shadow-md p-5">
+          <div className="flex justify-between items-center mb-4 pb-2 border-b border-zinc-400">
+            <h3 className="text-lg sm:text-xl font-semibold text-zinc-800">
+              Assignment Progress
+            </h3>
             <select
-              className="filter-dropdown"
+              className="px-3 py-2 rounded-lg border border-zinc-300 text-sm text-zinc-700 focus:ring-2 focus:ring-[rgba(106,98,255,0.2)] outline-none"
               onChange={(e) => handleDropdownChange(e, "Assignment Progress")}
             >
               <option value="today">Today</option>
@@ -263,17 +192,17 @@ const DashboardMain = () => {
             </select>
           </div>
 
-          <div className="progress-list">
+          <div className="flex flex-col gap-4">
             {courseProgressData.map((data, index) => (
-              <div key={index} className="progress-item">
-                <div className="progress-top-row">
-                  <span className="progress-text">{data.name}</span>
-                  <span className="progress-tasks">{data.tasks} Tasks</span>
+              <div key={index} className="flex flex-col">
+                <div className="flex justify-between mb-1 font-medium">
+                  <span>{data.name}</span>
+                  <span>{data.tasks} Tasks</span>
                 </div>
 
-                <div className="progress-bar-wrapper">
+                <div className="h-2.5 bg-[rgba(0,208,181,0.15)] rounded-md overflow-hidden">
                   <div
-                    className="progress-bar-fill"
+                    className="h-full rounded-md transition-all duration-300 ease-in-out"
                     style={{
                       width: `${data.value}%`,
                       backgroundColor: "rgba(254, 109, 53,0.8)",
@@ -281,8 +210,8 @@ const DashboardMain = () => {
                   />
                 </div>
 
-                <div className="progress-bottom-row">
-                  <span className="progress-percentage">{data.value}%</span>
+                <div className="text-right text-xs text-gray-600 mt-1">
+                  {data.value}%
                 </div>
               </div>
             ))}
@@ -291,100 +220,91 @@ const DashboardMain = () => {
       </section>
 
       {/* Upcoming Webinar Section */}
-      <section className="upcoming-webinar-section card">
-        <div className="webinar-content">
-          {/* Removed image thumbnail */}
-          <img
-            className="webinar-thumbnail-placeholder"
-            src="https://img.freepik.com/free-vector/webinar-concept-with-laughing-man_23-2147759429.jpg?semt=ais_hybrid&w=740&q=80"
-          />
+      <section className="flex flex-col md:flex-row p-6 rounded-2xl bg-white shadow-md transition-transform hover:-translate-y-1 gap-4 md:gap-6">
+        <img
+          className="w-full md:w-[200px] h-40 md:h-32 object-cover rounded-xl shadow-md"
+          src="https://img.freepik.com/free-vector/webinar-concept-with-laughing-man_23-2147759429.jpg?semt=ais_hybrid&w=740&q=80"
+          alt="Webinar"
+        />
 
-          {/* Placeholder text */}
-          <div className="webinar-details">
-            <h3>Upcoming Webinar</h3>
-            <p className="webinar-title">
-              Next Generation Frontend Architecture Using Layout Engine and
-              React Native
-            </p>
-            <div className="webinar-meta">
-              <span>📅 17 Nov 23</span>
-              <span>👨‍💻 32 minutes</span>
-            </div>
-            <button
-              className="primary join-event-button"
-              onClick={handleJoinEventClick}
-            >
-              🗓️ Join The Event
-            </button>
+        <div className="flex flex-col justify-center flex-1">
+          <h3 className="text-lg font-semibold mb-1">Upcoming Webinar</h3>
+          <p className="text-base font-medium text-gray-800 leading-relaxed mb-3">
+            Next Generation Frontend Architecture Using Layout Engine and React
+            Native
+          </p>
+          <div className="flex flex-wrap gap-4 text-sm text-gray-500 mb-4">
+            <span>📅 17 Nov 23</span>
+            <span>👨‍💻 32 minutes</span>
           </div>
+          <button
+            className="bg-[#00bda5] text-white px-5 py-2 rounded-lg font-semibold text-sm shadow-md hover:bg-[#fe6d35] transition-colors w-full sm:w-auto"
+            onClick={handleJoinEventClick}
+          >
+            🗓️ Join The Event
+          </button>
         </div>
       </section>
 
-      {/* Graphs Section: Topic Interested & Popular Instructors */}
-      <section className="dashboard-section-flex">
-        {/* ===== Topic Interest Chart ===== */}
-        <div className="topic-interest-card card">
-          <div className="card-header">
-            <h3>Topic you are interested in</h3>
-          </div>
+      {/* Graphs Section: Topic Interest & Popular Instructors */}
+      <section className="flex flex-col lg:flex-row gap-6 lg:gap-8 p-6 rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.1)]">
+        {/* Topic Interest */}
+        <div className="flex-1 bg-white rounded-xl p-5 shadow-md">
+          <h3 className="text-lg font-semibold mb-4">
+            Topics You Are Interested In
+          </h3>
+          <ResponsiveContainer width="100%" height={250}>
+            <PieChart>
+              <Pie
+                data={topicInterestData}
+                dataKey="value"
+                cx="50%"
+                cy="50%"
+                outerRadius={80}
+                labelLine={false}
+              >
+                {topicInterestData.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={PIE_COLORS[index % PIE_COLORS.length]}
+                  />
+                ))}
+              </Pie>
+              <Tooltip />
+              <Legend verticalAlign="bottom" height={36} />
+            </PieChart>
+          </ResponsiveContainer>
 
-          <div className="chart-container">
-            <ResponsiveContainer width="100%" height={270}>
-              <PieChart>
-                <Pie
-                  data={topicInterestData}
-                  cx="50%"
-                  cy="45%"
-                  outerRadius={100}
-                  dataKey="value"
-                  fill="#00D0B5"
-                  labelLine={false}
-                >
-                  {topicInterestData.map((entry, index) => (
-                    <Cell
-                      key={`cell-${index}`}
-                      fill={PIE_COLORS[index % PIE_COLORS.length]}
-                    />
-                  ))}
-                </Pie>
-                <Tooltip />
-                <Legend
-                  layout="vertical"
-                  align="right"
-                  verticalAlign="middle"
+          <div className="flex flex-col gap-3 mt-4">
+            {topicInterestData.map((item, index) => (
+              <div
+                key={index}
+                className="flex flex-wrap items-center gap-2 p-2 shadow-[0_2px_6px_rgba(0,0,0,0.05)] rounded"
+              >
+                <span
+                  className="w-5 h-3 rounded"
+                  style={{
+                    backgroundColor: PIE_COLORS[index % PIE_COLORS.length],
+                  }}
                 />
-              </PieChart>
-            </ResponsiveContainer>
-
-            {/* Topic Details */}
-            <div className="topic-details">
-              {topicInterestData.map((item, index) => (
-                <div key={index} className="topic-item">
-                  <span
-                    className="topic-color-indicator"
-                    style={{
-                      backgroundColor: PIE_COLORS[index % PIE_COLORS.length],
-                    }}
-                  ></span>
-                  <span className="topic-name">{item.name}</span>
-                  <span className="topic-value">{item.value}%</span>
-                  {item.language && (
-                    <span className="topic-language">
-                      ({item.language} {item.langValue}%)
-                    </span>
-                  )}
-                </div>
-              ))}
-            </div>
+                <span className="font-semibold">{item.name}</span>
+                <span className="font-medium text-zinc-700">{item.value}%</span>
+                {item.language && (
+                  <span className="text-xs text-gray-600 opacity-70">
+                    ({item.language} {item.langValue}%)
+                  </span>
+                )}
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* ===== Popular Instructors List ===== */}
-        <div className="popular-instructors-card card">
-          <div className="card-header">
-            <h3>Popular Instructors</h3>
+        {/* Popular Instructors */}
+        <div className="flex-1 bg-white rounded-xl p-5 shadow-md overflow-x-auto">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-lg font-semibold">Popular Instructors</h3>
             <select
-              className="filter-dropdown"
+              className="px-2 py-1.5 rounded border border-gray-300 text-sm"
               onChange={(e) => handleDropdownChange(e, "Popular Instructors")}
             >
               <option value="all">All</option>
@@ -392,76 +312,43 @@ const DashboardMain = () => {
             </select>
           </div>
 
-          <table className="instructor-table">
+          <table className="min-w-full border-collapse">
             <thead>
               <tr>
-                <th>INSTRUCTORS</th>
-                <th>COURSES</th>
+                <th className="text-left pb-2 border-b border-gray-200">
+                  INSTRUCTORS
+                </th>
+                <th className="text-left pb-2 border-b border-gray-200">
+                  COURSES
+                </th>
               </tr>
             </thead>
             <tbody>
               {popularInstructors.map((instructor, index) => (
-                <tr key={index}>
-                  <td>
-                    <div className="instructor-info">
-                      <span className="instructor-icon-avatar">
-                        <FaChalkboardTeacher />
-                      </span>
-                      <div className="instructor-details">
-                        <p>{instructor.name}</p>
-                        <small>{instructor.role}</small>
+                <tr
+                  key={index}
+                  className="hover:bg-[rgba(254,109,53,0.1)] transition-colors"
+                >
+                  <td className="py-2 border-b border-gray-200">
+                    <div className="flex items-center gap-2">
+                      <FaChalkboardTeacher className="text-[#00d0b5] text-2xl" />
+                      <div>
+                        <p className="font-medium m-0">{instructor.name}</p>
+                        <small className="text-gray-500 text-xs">
+                          {instructor.role}
+                        </small>
                       </div>
                     </div>
                   </td>
-                  <td>{instructor.courses}</td>
+                  <td className="py-2 border-b border-gray-200">
+                    {instructor.courses}
+                  </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
       </section>
-
-      {/* Another Graph (e.g., Student Growth Over Time) */}
-      {/* <section className="student-growth-card card">
-        <div className="card-header">
-          <h3>Student & Teacher Growth</h3>
-          <select
-            className="filter-dropdown"
-            onChange={(e) =>
-              handleDropdownChange(e, "Student & Teacher Growth")
-            }
-          >
-            <option value="year">This Year</option>
-            <option value="month">This Month</option>
-          </select>
-        </div>
-        <div className="chart-container">
-          <ResponsiveContainer width="100%" height={350}>
-            <LineChart
-              data={studentData}
-              margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-            >
-              <CartesianGrid
-                strokeDasharray="3 3"
-                stroke="var(--border-color)"
-              />
-              <XAxis dataKey="name" stroke="var(--text-color)" />
-              <YAxis stroke="var(--text-color)" />
-              <Tooltip />
-              <Legend />
-              <Line
-                type="monotone"
-                dataKey="students"
-                stroke="#8884d8"
-                activeDot={{ r: 8 }}
-              />
-              <Line type="monotone" dataKey="teachers" stroke="#82ca9d" />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
-      </section> */}
-
-      {/* Admin Panel section (from 5th image, simplified) */}
     </main>
   );
 };

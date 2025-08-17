@@ -1,0 +1,505 @@
+/* src/components/DashboardMain.css */
+.dashboard-main {
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* Space between main sections */
+}
+
+/* General card styling for consistency across dashboard sections */
+.card {
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow:   0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+ 
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-header h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.filter-dropdown {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background-color: var(--background-light);
+  color: var(--text-color);
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.filter-dropdown:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(106, 98, 255, 0.2);
+}
+
+/* Dashboard Cards (Top Row) */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 20px;
+}
+
+/* Flex Section for two-column layouts */
+.dashboard-section-flex {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.dashboard-section-flex > .card {
+  flex: 1; /* Allow cards to grow and shrink */
+  min-width: 300px; /* Minimum width before wrapping */
+}
+
+/* Top Courses Card */
+.top-courses-card .course-list {
+  list-style: none;
+  padding: 0;
+}
+
+.top-courses-card .course-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer; /* Indicate clickable */
+  transition: background-color 0.2s ease;
+}
+
+.top-courses-card .course-list li:hover {
+    background-color: var(--background-light);
+    border-radius: 5px;
+}
+
+.top-courses-card .course-list li:last-child {
+  border-bottom: none;
+}
+
+.top-courses-card .course-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.top-courses-card .course-text-icon { /* Styling for the text-based "icon" */
+  font-size: 1.3rem;
+  /* color property set inline in JSX */
+}
+
+.top-courses-card .views {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+/* Assignment Progress Card */
+.assignment-progress-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  color: #333;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.filter-dropdown {
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.progress-item {
+  display: flex;
+  flex-direction: column;
+}
+.instructor-table tr:hover{
+  background-color: rgba(254, 109, 53,0.3);
+}
+
+.progress-top-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.progress-bar-wrapper {
+  height: 10px;
+  background-color: rgba(0, 208, 181, 0.15); /* lighter version */
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.3s ease-in-out;
+  background-color: rgba(0, 208, 181, 1); /* strong color */
+}
+
+.progress-bottom-row {
+  text-align: right;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  color: #555;
+}
+
+
+/* Upcoming Webinar Section */
+.upcoming-webinar-section {
+  display: flex;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.upcoming-webinar-section:hover {
+  transform: translateY(-5px);
+}
+
+.webinar-content {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  width: 100%;
+}
+
+.webinar-thumbnail-placeholder {
+  width: 200px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(0, 189, 165, 0.2);
+}
+
+.webinar-details h3 {
+  color: black;
+  font-size: 1.2rem;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+.webinar-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0.3rem 0 1rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.webinar-meta {
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.join-event-button {
+  background-color: #00bda5;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 189, 165, 0.4);
+  transition: background 0.3s ease;
+}
+
+.join-event-button:hover {
+  background-color: rgb(254, 109, 53);
+}
+
+/* No specific icon styling needed for emojis */
+/* .join-event-button .button-icon {
+  font-size: 1.2rem;
+} */
+
+/* Topic Interest Card */
+.chart-container {
+height: fit-content;
+  margin-bottom: 3vh; /* give room for legend */
+}
+.card-header{
+  height: 3vh;
+  
+}
+.topic-interest-card .chart-container {
+   
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center; /* Center chart and legend */
+}
+
+.topic-interest-card .topic-details {
+  
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.topic-interest-card .topic-item {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+ padding: 1vh 0px;
+  box-shadow:   0 4px 12px rgba(0, 0, 0, 0.1);
+  gap: 3px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+.topic-item:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+} 
+
+.topic-interest-card .topic-name {
+
+  font-weight: 600;
+  margin-right: 5px;
+}
+.topic-color-indicator{
+  width: 4vw;
+  height: 2vh;
+  
+}
+.topic-interest-card .topic-value {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.topic-interest-card .topic-language {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+/* Popular Instructors Card */
+.popular-instructors-card {
+  padding: 0.5rem 1rem;
+  margin: 0;
+  height: fit-content;
+ 
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.filter-dropdown {
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid #bbb7b7;
+  background-color: #fff;
+}
+
+.instructor-table {  
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.instructor-table th,
+.instructor-table td {
+  text-align: left;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.instructor-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.instructor-icon-avatar {
+  font-size: 1.5rem;
+  color: rgba(0, 208, 181); /* your requested color */
+}
+
+.instructor-details p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.instructor-details small {
+  color: #777;
+  font-size: 0.8rem;
+}
+
+
+
+/* Student Growth Card (Recharts) */
+/* .student-growth-card .chart-container {
+  width: 100%;
+  height: 350px; Fixed height for the chart
+} */
+
+ 
+/* .admin-panel-section h4 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+} */
+
+/* .admin-panel-section ul {
+  margin-bottom: 20px;
+  padding-left: 20px; 
+} */
+
+/* .admin-panel-section li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  list-style-type: disc; 
+  line-height: 1.5;
+} */
+
+/* .admin-panel-section .full-width-button {
+  width: 100%;
+  margin-top: 10px;
+} */
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .dashboard-main {
+    padding: 15px;
+  }
+  .dashboard-cards {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .dashboard-section-flex {
+    flex-direction: column; /* Stack sections vertically */
+    gap: 20px;
+  }
+  .dashboard-section-flex > .card {
+    min-width: unset; /* Remove min-width on small screens */
+    width: 100%;
+  }
+  .webinar-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .webinar-thumbnail-placeholder {
+    width: 100%; /* Full width thumbnail on small screens */
+    height: auto;
+    max-height: 150px; /* Ensure it doesn't get too tall */
+  }
+  .webinar-meta {
+    justify-content: center;
+  }
+  .topic-interest-card .chart-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 10px;
+  }
+  .search-bar {
+    padding: 6px 10px;
+  }
+  .search-bar input {
+    font-size: 0.9rem;
+  }
+  .header-right {
+    gap: 8px;
+  }
+  .icon-button {
+    font-size: 1.2rem;
+    padding: 6px;
+  }
+  .user-text-icon {
+    font-size: 2rem;
+  }
+  .card {
+    padding: 15px 20px;
+  }
+  .card-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.8rem;
+  }
+  .card-value {
+    font-size: 1.8rem;
+  }
+  .dashboard-main {
+    padding: 10px;
+    gap: 20px;
+  }
+  .card-header h3 {
+    font-size: 1rem;
+  }
+  .filter-dropdown {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+  .course-info span, .views {
+    font-size: 0.9rem;
+  }
+  .webinar-details h3 {
+    font-size: 1.1rem;
+  }
+  .join-event-button {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+  .instructor-table th, .instructor-table td {
+    padding: 8px 0;
+    font-size: 0.9rem;
+  }
+  .admin-panel-section li {
+    font-size: 0.9rem;
+  }
+}
