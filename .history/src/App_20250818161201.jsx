@@ -632,7 +632,7 @@ function App() {
               </div>
               <button
                 onClick={addProject}
-                className="mb-6 bg-[#0781d9] hover:bg-[#025e9f] text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200"
+                className="mb-6 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200"
               >
                 Add Project
               </button>
@@ -657,12 +657,12 @@ function App() {
                     <div className="flex space-x-2">
                       <button
                         onClick={() => removeProject(project.id)}
-                        className="flex-1 bg-[#fe4d35] hover:bg-[#f52f15] text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200"
+                        className="flex-1 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200"
                       >
                         Remove
                       </button>
 
-                      <button className="flex-1  bg-[#01c1b6] hover:bg-[#09706b] text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200">
+                      <button className="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200">
                         Upskill
                       </button>
                     </div>
@@ -751,7 +751,6 @@ function App() {
                     Monthly Hire Trend
                   </h3>
                   <Bar
-                    className="max-h-full w-full h-full"
                     data={hireTrendData}
                     options={{ responsive: true, maintainAspectRatio: false }}
                   />
@@ -761,7 +760,6 @@ function App() {
                     Placement Package Distribution
                   </h3>
                   <Pie
-                    className="max-h-full w-full h-full"
                     data={placementDistributionData}
                     options={{ responsive: true, maintainAspectRatio: false }}
                   />
@@ -819,13 +817,13 @@ function App() {
                     className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                   />
                 </div>
+                <button
+                  onClick={addMentorReview}
+                  className="mb-6 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200"
+                >
+                  Add Review
+                </button>
               </div>
-              <button
-                onClick={addMentorReview}
-                className="mb-6 bg-[#0781d9] hover:bg-[#025e9f] text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200"
-              >
-                Add Review
-              </button>
 
               <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-[25px]">
                 {mentorReviews.map((review) => (

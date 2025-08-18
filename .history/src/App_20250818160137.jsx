@@ -632,7 +632,7 @@ function App() {
               </div>
               <button
                 onClick={addProject}
-                className="mb-6 bg-[#0781d9] hover:bg-[#025e9f] text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200"
+                className="mb-6 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200"
               >
                 Add Project
               </button>
@@ -641,7 +641,7 @@ function App() {
                 {projects.map((project) => (
                   <div
                     key={project.id}
-                    className="bg-white p-4 shadow-zinc-300 rounded-lg shadow-sm  hover:shadow-md transition-shadow duration-200"
+                    className="bg-white p-4 shadow-zinc-400 rounded-lg shadow-sm  hover:shadow-md transition-shadow duration-200"
                   >
                     <h3 className="text-lg font-medium text-gray-800 mb-2">
                       {project.title}
@@ -657,12 +657,12 @@ function App() {
                     <div className="flex space-x-2">
                       <button
                         onClick={() => removeProject(project.id)}
-                        className="flex-1 bg-[#fe4d35] hover:bg-[#f52f15] text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200"
+                        className="flex-1 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200"
                       >
                         Remove
                       </button>
 
-                      <button className="flex-1  bg-[#01c1b6] hover:bg-[#09706b] text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200">
+                      <button className="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200">
                         Upskill
                       </button>
                     </div>
@@ -745,23 +745,17 @@ function App() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[30px]">
-                <div className="max-h-[500px] min-h-[300px] bg-white p-[25px] rounded-xl shadow-[var(--shadow)] flex flex-col items-center justify-center">
-                  <h3 className="mb-[20px] text-[1.4rem] text-black font-semibold">
-                    Monthly Hire Trend
-                  </h3>
+              <div className="charts-container">
+                <div className="chart-card fade-in">
+                  <h3>Monthly Hire Trend</h3>
                   <Bar
-                    className="max-h-full w-full h-full"
                     data={hireTrendData}
                     options={{ responsive: true, maintainAspectRatio: false }}
                   />
                 </div>
-                <div className="max-h-[500px] min-h-[300px] bg-white p-[25px] rounded-xl shadow-[var(--shadow)] flex flex-col items-center justify-center">
-                  <h3 className="mb-[20px] text-[1.4rem] text-black font-semibold">
-                    Placement Package Distribution
-                  </h3>
+                <div className="chart-card fade-in">
+                  <h3>Placement Package Distribution</h3>
                   <Pie
-                    className="max-h-full w-full h-full"
                     data={placementDistributionData}
                     options={{ responsive: true, maintainAspectRatio: false }}
                   />
@@ -819,29 +813,20 @@ function App() {
                     className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                   />
                 </div>
+                <button
+                  onClick={addMentorReview}
+                  className="mb-6 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200"
+                >
+                  Add Review
+                </button>
               </div>
-              <button
-                onClick={addMentorReview}
-                className="mb-6 bg-[#0781d9] hover:bg-[#025e9f] text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200"
-              >
-                Add Review
-              </button>
 
-              <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-[25px]">
+              <div className="reviews-container">
                 {mentorReviews.map((review) => (
-                  <div
-                    key={review.id}
-                    className="p-[25px] bg-[#fdfdfd] shadow-[var(--shadow)] transition-transform duration-200 ease-in-out hover:-translate-y-[3px]"
-                  >
-                    <h4 className="mb-[10px] text-[1.25rem] text-[rgba(0,208,181,1)] font-semibold">
-                      {review.mentor}
-                    </h4>
-                    <p className="italic text-[var(--text-dark)] mb-[10px] leading-[1.6]">
-                      "{review.feedback}"
-                    </p>
-                    <div className="text-[1.3rem] text-[rgb(254,109,53)]">
-                      {renderStars(review.rating)}
-                    </div>
+                  <div key={review.id} className="review fade-in">
+                    <h4>{review.mentor}</h4>
+                    <p className="feedback-text">"{review.feedback}"</p>
+                    <div className="stars">{renderStars(review.rating)}</div>
                   </div>
                 ))}
               </div>

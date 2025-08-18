@@ -424,7 +424,7 @@ gap: 0.5vw;
   gap: 8px;
 } */
 
-/* .charts-container {
+.charts-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
@@ -450,14 +450,14 @@ gap: 0.5vw;
 }
 
 /* Ensure chart responsiveness */
-/* .chart-card canvas {
+.chart-card canvas {
   max-height: 100%;
   width: 100% !important;
   height: 100% !important;
-}  */
+}
 
 /* ================== Reviews ================== */
-/* .reviews-container {
+.reviews-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 25px;
@@ -468,35 +468,35 @@ gap: 0.5vw;
   background: #fdfdfd;
   /* border-left: 5px solid var(--accent);
   border-radius: 12px; */
-  /* box-shadow: var(--shadow);
+  box-shadow: var(--shadow);
   transition: transform 0.2s ease;
-} */
+}
 
-/* .review:hover {
+.review:hover {
   transform: translateY(-3px);
-} */
+}
 
-/* .review h4 {
+.review h4 {
   margin-bottom: 10px;
   color: rgba(0, 208, 181);
   font-size: 1.25rem;
-} */
+}
 
-/* .review .feedback-text {
+.review .feedback-text {
   font-style: italic;
   color: var(--text-dark);
   margin-bottom: 10px;
   line-height: 1.6;
-} */
-/* 
+}
+
 .review .stars {
   color: rgb(254, 109, 53);
-  font-size: 1.3rem; */
-/* } */
+  font-size: 1.3rem;
+}
 
-/* .review .star-empty {
+.review .star-empty {
   color: #ccc;
-}  */
+}
 
 /* ================== Footer ================== */
 /* .footer {

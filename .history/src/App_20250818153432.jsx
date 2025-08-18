@@ -584,7 +584,7 @@ function App() {
             {/* Projects Section */}
             <section
               id="projects"
-              className="bg-white p-4 sm:p-6 mb-6 rounded-xl shadow-md"
+              className="bg-white p-4 sm:p-6 rounded-xl shadow-md"
             >
               <h2 className="mb-4 sm:mb-6 text-xl sm:text-2xl border-b-2 border-blue-500 pb-2">
                 Manage Projects
@@ -632,7 +632,7 @@ function App() {
               </div>
               <button
                 onClick={addProject}
-                className="mb-6 bg-[#0781d9] hover:bg-[#025e9f] text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200"
+                className="mb-6 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200"
               >
                 Add Project
               </button>
@@ -641,7 +641,7 @@ function App() {
                 {projects.map((project) => (
                   <div
                     key={project.id}
-                    className="bg-white p-4 shadow-zinc-300 rounded-lg shadow-sm  hover:shadow-md transition-shadow duration-200"
+                    className="bg-white p-4 rounded-lg shadow-sm border-l-4 border-purple-500 hover:shadow-md transition-shadow duration-200"
                   >
                     <h3 className="text-lg font-medium text-gray-800 mb-2">
                       {project.title}
@@ -657,12 +657,12 @@ function App() {
                     <div className="flex space-x-2">
                       <button
                         onClick={() => removeProject(project.id)}
-                        className="flex-1 bg-[#fe4d35] hover:bg-[#f52f15] text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200"
+                        className="flex-1 bg-red-600 hover:bg-red-700 text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200"
                       >
                         Remove
                       </button>
 
-                      <button className="flex-1  bg-[#01c1b6] hover:bg-[#09706b] text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200">
+                      <button className="flex-1 bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200">
                         Upskill
                       </button>
                     </div>
@@ -670,25 +670,16 @@ function App() {
                 ))}
               </div>
             </section>
-            {/* Analytics  Section */}
-            <section
-              id="analytics"
-              className="bg-white mb-6 p-4 sm:p-6 rounded-xl shadow-md"
-            >
-              <h2 className="mb-4 sm:mb-6 text-xl sm:text-2xl border-b-2 border-blue-500 pb-2">
-                Analytics - Insights Overview{" "}
-              </h2>
+
+            <section id="analytics">
+              <h2>Analytics - Insights Overview </h2>
               <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-[25px] mb-[40px]">
                 <div className="bg-[rgba(0,208,181,0.2)] p-[25px] shadow-[var(--shadow)] flex flex-col justify-between transition-transform duration-200 ease-in-out hover:-translate-y-[3px]">
-                  <h3 className="mb-[12px] text-[1.2rem] text-[rgb(254,109,53)] font-semibold">
-                    Total Hires
-                  </h3>
-                  <p className="font-bold text-[1.4rem] text-zinc-800">
-                    {analytics.totalHires}
-                  </p>
-                  <div className="bg-[#e0e0e0] rounded-[10px] h-[12px] mt-[15px] overflow-hidden">
+                  <h3>Total Hires</h3>
+                  <p className="metric-value">{analytics.totalHires}</p>
+                  <div className="bar-wrapper">
                     <div
-                      className="bg-[rgba(254,109,53,0.8)] h-full rounded-[10px] transition-all duration-500 ease-out w-[70%]"
+                      className="bar-fill"
                       style={{
                         width: `${Math.min(
                           (analytics.totalHires / 200) * 100,
@@ -699,115 +690,109 @@ function App() {
                   </div>
                 </div>
 
-                <div className="bg-[rgba(0,208,181,0.2)] p-[25px] shadow-zinc-900 flex flex-col justify-between transition-transform duration-200 ease-in-out hover:-translate-y-[3px]">
-                  <h3 className="mb-[12px] text-[1.2rem] text-[rgb(254,109,53)] font-semibold">
-                    Top Companies
-                  </h3>
-                  <ul className="list-none pl-0 mt-3">
+                <div className="analytics-card fade-in">
+                  <h3>Top Companies</h3>
+                  <ul className="top-list">
                     {analytics.topCompanies.map((company, i) => (
-                      <li
-                        key={i}
-                        className="mb-2 text-[1rem] text-zinc-800 flex justify-end items-center gap-2"
-                      >
+                      <li key={i}>
                         <span role="img" aria-label="company"></span> {company}
                       </li>
                     ))}
                   </ul>
                 </div>
 
-                <div className="bg-[rgba(0,208,181,0.2)] p-[25px] shadow-zinc-900 flex flex-col justify-between transition-transform duration-200 ease-in-out hover:-translate-y-[3px]">
-                  <h3 className="mb-[12px] text-[1.2rem] text-[rgb(254,109,53)] font-semibold">
-                    Avg. Package
-                  </h3>
-                  <p className="font-bold text-[1.4rem] text-zinc-800">
-                    {analytics.avgPlacement}
-                  </p>
+                <div className="analytics-card fade-in">
+                  <h3>Avg. Package</h3>
+                  <p className="metric-value">{analytics.avgPlacement}</p>
                 </div>
 
-                <div className="bg-[rgba(0,208,181,0.2)] p-[25px] shadow-zinc-900 flex flex-col justify-between transition-transform duration-200 ease-in-out hover:-translate-y-[3px]">
-                  <h3 className="mb-[12px] text-[1.2rem] text-[rgb(254,109,53)] font-semibold">
-                    Most Popular Tech
-                  </h3>
-                  <p className="font-bold text-[1.4rem] text-zinc-800">
-                    <span role="img" aria-label="fire"></span>
+                <div className="analytics-card fade-in">
+                  <h3>Most Popular Tech</h3>
+                  <p className="metric-value">
+                    <span role="img" aria-label="fire"></span>{" "}
                     {analytics.mostPopularTech}
                   </p>
                 </div>
 
-                <div className="bg-[rgba(0,208,181,0.2)] p-[25px] shadow-zinc-900 flex flex-col justify-between transition-transform duration-200 ease-in-out hover:-translate-y-[3px]">
-                  <h3 className="mb-[12px] text-[1.2rem] text-[rgb(254,109,53)] font-semibold">
-                    Top Mentor
-                  </h3>
-                  <p className="font-bold text-[1.4rem] text-zinc-800">
-                    <span role="img" aria-label="trophy"></span>
+                <div className="analytics-card fade-in">
+                  <h3>Top Mentor</h3>
+                  <p className="metric-value">
+                    <span role="img" aria-label="trophy"></span>{" "}
                     {analytics.bestMentor}
                   </p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-[30px]">
-                <div className="max-h-[500px] min-h-[300px] bg-white p-[25px] rounded-xl shadow-[var(--shadow)] flex flex-col items-center justify-center">
-                  <h3 className="mb-[20px] text-[1.4rem] text-black font-semibold">
-                    Monthly Hire Trend
-                  </h3>
+              <div className="charts-container">
+                <div className="chart-card fade-in">
+                  <h3>Monthly Hire Trend</h3>
                   <Bar
-                    className="max-h-full w-full h-full"
                     data={hireTrendData}
                     options={{ responsive: true, maintainAspectRatio: false }}
                   />
                 </div>
-                <div className="max-h-[500px] min-h-[300px] bg-white p-[25px] rounded-xl shadow-[var(--shadow)] flex flex-col items-center justify-center">
-                  <h3 className="mb-[20px] text-[1.4rem] text-black font-semibold">
-                    Placement Package Distribution
-                  </h3>
+                <div className="chart-card fade-in">
+                  <h3>Placement Package Distribution</h3>
                   <Pie
-                    className="max-h-full w-full h-full"
                     data={placementDistributionData}
                     options={{ responsive: true, maintainAspectRatio: false }}
                   />
                 </div>
               </div>
             </section>
-            {/* mentor reviews Section */}
-            <section
-              id="mentor"
-              className="bg-white p-4 sm:p-6 rounded-xl shadow-md"
-            >
-              <h2 className="mb-4 sm:mb-6 text-xl sm:text-2xl border-b-2 border-blue-500 pb-2">
-                Mentor Reviews{" "}
-              </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+            <section id="mentor" className="panel slide-in">
+              <h2>Mentor Reviews </h2>
+
+              <div className="add-item-form">
                 <div className="Searching">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Mentor Name{" "}
-                  </label>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className=""
+                  >
+                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                  </svg>
                   <input
                     type="text"
                     placeholder="Mentor Name"
                     value={newReviewMentor}
                     onChange={(e) => setNewReviewMentor(e.target.value)}
-                    className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    className="search-input "
                   />
                 </div>
 
                 <div className="Searching">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Review Text{" "}
-                  </label>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className=""
+                  >
+                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                  </svg>
                   <input
                     type="text"
                     placeholder="Review Text"
                     value={newReviewText}
                     onChange={(e) => setNewReviewText(e.target.value)}
-                    className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    className="search-input "
                   />
                 </div>
 
                 <div className="Searching">
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Review Rating{" "}
-                  </label>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className=""
+                  >
+                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+                  </svg>
                   <input
                     type="number"
                     placeholder="Rating (0-5)"
@@ -816,32 +801,20 @@ function App() {
                     min="0"
                     max="5"
                     step="0.1"
-                    className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    className="search-input "
                   />
                 </div>
+                <button onClick={addMentorReview} className="btn btn-primary">
+                  Add Review
+                </button>
               </div>
-              <button
-                onClick={addMentorReview}
-                className="mb-6 bg-[#0781d9] hover:bg-[#025e9f] text-white py-2 px-4 rounded-md text-sm font-medium transition-colors duration-200"
-              >
-                Add Review
-              </button>
 
-              <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-[25px]">
+              <div className="reviews-container">
                 {mentorReviews.map((review) => (
-                  <div
-                    key={review.id}
-                    className="p-[25px] bg-[#fdfdfd] shadow-[var(--shadow)] transition-transform duration-200 ease-in-out hover:-translate-y-[3px]"
-                  >
-                    <h4 className="mb-[10px] text-[1.25rem] text-[rgba(0,208,181,1)] font-semibold">
-                      {review.mentor}
-                    </h4>
-                    <p className="italic text-[var(--text-dark)] mb-[10px] leading-[1.6]">
-                      "{review.feedback}"
-                    </p>
-                    <div className="text-[1.3rem] text-[rgb(254,109,53)]">
-                      {renderStars(review.rating)}
-                    </div>
+                  <div key={review.id} className="review fade-in">
+                    <h4>{review.mentor}</h4>
+                    <p className="feedback-text">"{review.feedback}"</p>
+                    <div className="stars">{renderStars(review.rating)}</div>
                   </div>
                 ))}
               </div>
